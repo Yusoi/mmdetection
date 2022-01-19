@@ -698,7 +698,7 @@ class CocoDataset(CustomDataset):
                 cocoDt = cocoGt.loadRes(predictions)
             except IndexError:
                 imgId = 0
-                tp, fp, tn, fn, cg, ig, ng = {}, {}, {}, {}, {}, {}, {}
+                tp, fp, tn, fn, cg, ig, ng, p1, p2, r1, r2 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
                 
                 tp[imgId] = [0,0,0,0,0,0,0,0]
                 fp[imgId] = [0,0,0,0,0,0,0,0]
@@ -707,15 +707,23 @@ class CocoDataset(CustomDataset):
                 cg[imgId] = [0,0,0,0]
                 ig[imgId] = [0,0,0,0]
                 ng[imgId] = [0,0,0,0]
-                
+                p1[imgId] = []
+                p2[imgId] = []
+                r1[imgId] = []
+                r2[imgId] = []
+
                 return {
                     'tp': tp,
                     'fp': fp,
                     'tn': tn,
                     'fn': fn,
-                    'correct_guesses': cg,
-                    'incorrect_guesses': ig,
-                    'not_guessed': ng,
+                    'cg': cg,
+                    'ig': ig,
+                    'ng': ng,
+                    'p1': p1,
+                    'p2': p2,
+                    'r1': r1,
+                    'r2': r2,
                 }     
         
         def _toMask(anns, coco):
@@ -741,7 +749,7 @@ class CocoDataset(CustomDataset):
         for dt in dts:
             _dts[dt['image_id'], dt['category_id']].append(dt)
         
-        tp, fp, tn, fn, cg, ig, ng, matched_dict = {}, {}, {}, {}, {}, {}, {}, {}
+        tp, fp, tn, fn, cg, ig, ng, p1, p2, r1, r2 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
         match_instances = self.match_instances
 
         if not is_cityscapes:
@@ -762,9 +770,13 @@ class CocoDataset(CustomDataset):
             cur_fp = [0,0,0,0,0,0,0,0]
             cur_tn = [0,0,0,0,0,0,0,0]
             cur_fn = [0,0,0,0,0,0,0,0]
-            cur_correct_guesses = [0,0,0,0]
-            cur_incorrect_guesses = [0,0,0,0]
-            cur_not_guessed = [0,0,0,0]
+            cur_cg = [0,0,0,0]
+            cur_ig = [0,0,0,0]
+            cur_ng = [0,0,0,0]
+            cur_p1 = []
+            cur_p2 = []
+            cur_r1 = []
+            cur_r2 = []
             
             gt_segm = []
             dt_segm = []
@@ -783,7 +795,6 @@ class CocoDataset(CustomDataset):
                 gt_bbox = np.around(gt_bbox).astype(int)
                 dt_bbox = np.around(dt_bbox).astype(int)           
                 gt_area = gt_bbox[2] * gt_bbox[3]
-                gt_bbox_x,gt_bbox_y = (gt_bbox[2],gt_bbox[3])
                 gt_bbox[2] = gt_bbox[0]+gt_bbox[2]
                 gt_bbox[3] = gt_bbox[1]+gt_bbox[3]
                 dt_bbox[2] = dt_bbox[0]+dt_bbox[2]
@@ -792,49 +803,67 @@ class CocoDataset(CustomDataset):
                 gt_counts = mask_util.decode(match[0]['segmentation'])
                 dt_counts = mask_util.decode(match[1]['segmentation'])
 
+                # METHOD 1
+
                 gt_mask = gt_counts[gt_bbox[1]:gt_bbox[3],gt_bbox[0]:gt_bbox[2]]
                 dt_mask = dt_counts[gt_bbox[1]:gt_bbox[3],gt_bbox[0]:gt_bbox[2]]
 
-                cur_tp[0] += np.count_nonzero(np.logical_and(gt_mask,dt_mask))
-                cur_fp[0] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
-                cur_tn[0] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
-                cur_fn[0] += np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
+                temp_tp_1 = np.count_nonzero(np.logical_and(gt_mask,dt_mask))
+                temp_fp_1 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
+                temp_tn_1 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
+                temp_fn_1 = np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
 
-                #Small
+                cur_tp[0] += temp_tp_1
+                cur_fp[0] += temp_fp_1
+                cur_tn[0] += temp_tn_1
+                cur_fn[0] += temp_fn_1
+                cur_p1.append(temp_tp_1/(temp_tp_1+temp_fp_1))
+                cur_r1.append(temp_tp_1/(temp_tp_1+temp_fn_1))
+
+                # Small
                 if gt_area < 32^9:
                     area_i = 1
-                #Medium    
+                # Medium    
                 elif gt_area <= 96^2:
                     area_i = 2
-                #Large
+                # Large
                 else:
                     area_i = 3
 
-                cur_correct_guesses[0] += 1    
-                cur_correct_guesses[area_i] += 1    
+                cur_cg[0] += 1    
+                cur_cg[area_i] += 1    
 
                 cur_tp[area_i] += np.count_nonzero(np.logical_and(gt_mask,dt_mask))
                 cur_fp[area_i] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
                 cur_tn[area_i] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
                 cur_fn[area_i] += np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
 
+                # METHOD 2
+
                 union_bbox = np.around([min(gt_bbox[0],dt_bbox[0]),min(gt_bbox[1],dt_bbox[1]),max(gt_bbox[2],dt_bbox[2]),max(gt_bbox[3],dt_bbox[3])])
                 union_area = (union_bbox[3]-union_bbox[1])*(union_bbox[2]-union_bbox[0])
                 gt_mask_union = gt_counts[union_bbox[1]:union_bbox[3],union_bbox[0]:union_bbox[2]]
                 dt_mask_union = dt_counts[union_bbox[1]:union_bbox[3],union_bbox[0]:union_bbox[2]]
 
-                cur_tp[4] += np.count_nonzero(np.logical_and(gt_mask_union,dt_mask_union))
-                cur_fp[4] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),dt_mask_union))
-                cur_tn[4] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),np.logical_not(dt_mask_union)))
-                cur_fn[4] += np.count_nonzero(np.logical_and(gt_mask_union,np.logical_not(dt_mask_union)))
+                temp_tp_2 = np.count_nonzero(np.logical_and(gt_mask_union,dt_mask_union))
+                temp_fp_2 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),dt_mask_union))
+                temp_tn_2 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),np.logical_not(dt_mask_union)))
+                temp_fn_2 = np.count_nonzero(np.logical_and(gt_mask_union,np.logical_not(dt_mask_union)))
 
-                #Small
+                cur_tp[4] += temp_tp_2
+                cur_fp[4] += temp_fp_2
+                cur_tn[4] += temp_tn_2
+                cur_fn[4] += temp_fn_2
+                cur_p2.append(temp_tp_2/(temp_tp_2+temp_fp_2))
+                cur_r2.append(temp_tp_2/(temp_tp_2+temp_fn_2))
+
+                # Small
                 if union_area < 32^9:
                     area_j = 5
-                #Medium    
+                # Medium    
                 elif union_area <= 96^2:
                     area_j = 6
-                #Large
+                # Large
                 else:
                     area_j = 7
 
@@ -848,55 +877,61 @@ class CocoDataset(CustomDataset):
                 cur_bbox = np.around(cur_bbox).astype(int)
                 cur_area = cur_bbox[2] * cur_bbox[3]
 
-                #Small
+                # Small
                 if cur_area < 32^9:
                     area_k = 1
-                #Medium    
+                # Medium    
                 elif cur_area <= 96^2:
                     area_k = 2
-                #Large
+                # Large
                 else:
                     area_k = 3
 
-                cur_incorrect_guesses[0] += 1    
-                cur_incorrect_guesses[area_k] += 1 
+                cur_ig[0] += 1    
+                cur_ig[area_k] += 1 
 
             for img in gt_unmatched:
                 cur_bbox = img['bbox']
                 cur_bbox = np.around(cur_bbox).astype(int)
                 cur_area = cur_bbox[2] * cur_bbox[3]
 
-                #Small
+                # Small
                 if cur_area < 32^9:
                     area_w = 1
-                #Medium    
+                # Medium    
                 elif cur_area <= 96^2:
                     area_w = 2
-                #Large
+                # Large
                 else:
                     area_w = 3
 
-                cur_not_guessed[0] += 1
-                cur_not_guessed[area_w] += 1 
+                cur_ng[0] += 1
+                cur_ng[area_w] += 1 
                 
             tp[imgId] = cur_tp.copy()
             fp[imgId] = cur_fp.copy()
             tn[imgId] = cur_tn.copy()
             fn[imgId] = cur_fn.copy()
-            correct_guesses[imgId] = cur_correct_guesses.copy()
-            incorrect_guesses[imgId] = cur_incorrect_guesses.copy()
-            not_guessed[imgId] = cur_not_guessed.copy()
-            #print("Image Id:",imgId,"CG:",correct_guesses[imgId],"IG:",incorrect_guesses[imgId],"NG:",not_guessed[imgId])
+            cg[imgId] = cur_cg.copy()
+            ig[imgId] = cur_ig.copy()
+            ng[imgId] = cur_ng.copy()
+            p1[imgId] = cur_p1.copy()
+            p2[imgId] = cur_p2.copy()
+            r1[imgId] = cur_r1.copy()
+            r2[imgId] = cur_r2.copy()
                 
         return {
             'tp': tp,
             'fp': fp,
             'tn': tn,
             'fn': fn,
-            'correct_guesses': correct_guesses,
-            'incorrect_guesses': incorrect_guesses,
-            'not_guessed': not_guessed,
-            'matched': matched_dict,
+            'cg': cg,
+            'ig': ig,
+            'ng': ng,
+            'p1': p1,
+            'p2': p2,
+            'r1': r1,
+            'r2': r2,
         }     
     
     def gt_return(self):
