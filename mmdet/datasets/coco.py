@@ -645,15 +645,19 @@ class CocoDataset(CustomDataset):
                 dt_bbox = dt_segm[dt]['bbox'].copy()
                 dt_bbox[2] = dt_bbox[0]+dt_bbox[2]
                 dt_bbox[3] = dt_bbox[1]+dt_bbox[3]
-                xA,xB,yA,yB = dt_bbox[0],dt_bbox[2],dt_bbox[1],dt_bbox[3]
+                xA,xB,yA,yB = int(round(dt_bbox[0])),int(round(dt_bbox[2])),int(round(dt_bbox[1])),int(round(dt_bbox[3]))
                 deviations = []
                 for c in crowds:
                     intersection = np.logical_and(mask_util.decode(gt_segm[c]['segmentation']),
                                                   dt_segm_decoded)
-                    cur_iou = IoU_Mask(gt_segm_decoded[yA:yB,xA:xB],
-                                       mask_util.decode(dt_segm[dt]['segmentation'])[yA:yB,xA:xB])
-                pos = max(range(len(deviations)), key=deviations.__getitem__)
-                if deviations[pos] < threshold:
+                    cur_iou = IoU_Mask(dt_segm_decoded[yA:yB,xA:xB],
+                                       intersection[yA:yB,xA:xB])
+                    deviations.append(cur_iou)
+                if len(crowds) != 0:
+                    pos = max(range(len(deviations)), key=deviations.__getitem__)
+                    if deviations[pos] < threshold:
+                        dt_unmatched.append(dt_segm[i])
+                else:
                     dt_unmatched.append(dt_segm[i])
             
         return matched, gt_unmatched, dt_unmatched
@@ -671,6 +675,7 @@ class CocoDataset(CustomDataset):
         catIds = sorted(cocoGt.getCatIds())
         imgIds = list(np.unique(imgIds))
         catIds = list(np.unique(catIds))
+        
         
         metrics = ['segm']
         iou_type = 'segm'
@@ -698,33 +703,31 @@ class CocoDataset(CustomDataset):
                 cocoDt = cocoGt.loadRes(predictions)
             except IndexError:
                 imgId = 0
-                tp, fp, tn, fn, cg, ig, ng, p1, p2, r1, r2 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
+                tp, fp, tn, fn, p, r, f1, cg, ig, ng  = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
                 
-                tp[imgId] = [0,0,0,0,0,0,0,0]
-                fp[imgId] = [0,0,0,0,0,0,0,0]
-                tn[imgId] = [0,0,0,0,0,0,0,0]
-                fn[imgId] = [0,0,0,0,0,0,0,0]
+                tp[imgId] = [[],[],[],[],[],[],[],[]]
+                fp[imgId] = [[],[],[],[],[],[],[],[]]
+                tn[imgId] = [[],[],[],[],[],[],[],[]]
+                fn[imgId] = [[],[],[],[],[],[],[],[]]
+                p[imgId] = [[],[],[],[]]
+                r[imgId] = [[],[],[],[]]
+                f1[imgId] = [[],[],[],[]]
                 cg[imgId] = [0,0,0,0]
                 ig[imgId] = [0,0,0,0]
                 ng[imgId] = [0,0,0,0]
-                p1[imgId] = []
-                p2[imgId] = []
-                r1[imgId] = []
-                r2[imgId] = []
 
                 return {
                     'tp': tp,
                     'fp': fp,
                     'tn': tn,
                     'fn': fn,
+                    'p': p,
+                    'r': r,
+                    "f1": f1,
                     'cg': cg,
                     'ig': ig,
                     'ng': ng,
-                    'p1': p1,
-                    'p2': p2,
-                    'r1': r1,
-                    'r2': r2,
-                }     
+                }         
         
         def _toMask(anns, coco):
             # modify ann['segmentation'] by reference
@@ -749,7 +752,7 @@ class CocoDataset(CustomDataset):
         for dt in dts:
             _dts[dt['image_id'], dt['category_id']].append(dt)
         
-        tp, fp, tn, fn, cg, ig, ng, p1, p2, r1, r2 = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
+        tp, fp, tn, fn, p, r, f1, cg, ig, ng  = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
         match_instances = self.match_instances
 
         if not is_cityscapes:
@@ -766,18 +769,19 @@ class CocoDataset(CustomDataset):
         
         for imgId in imgIds:
             # M1 / M1 Small / M1 Medium / M1 Large / M2 / M2 Small / M2 Medium / M2 Large
-            cur_tp = [0,0,0,0,0,0,0,0]
-            cur_fp = [0,0,0,0,0,0,0,0]
-            cur_tn = [0,0,0,0,0,0,0,0]
-            cur_fn = [0,0,0,0,0,0,0,0]
+            cur_tp = [[],[],[],[],[],[],[],[]]
+            cur_fp = [[],[],[],[],[],[],[],[]]
+            cur_tn = [[],[],[],[],[],[],[],[]]
+            cur_fn = [[],[],[],[],[],[],[],[]]
+            # Method 1 All / Method 1 Correct / Method 2 All / Method 2 Correct
+            cur_p = [[],[],[],[]]
+            cur_r = [[],[],[],[]]
+            cur_f1 = [[],[],[],[]]
             cur_cg = [0,0,0,0]
             cur_ig = [0,0,0,0]
             cur_ng = [0,0,0,0]
-            cur_p1 = []
-            cur_p2 = []
-            cur_r1 = []
-            cur_r2 = []
             
+             
             gt_segm = []
             dt_segm = []
             
@@ -812,13 +816,20 @@ class CocoDataset(CustomDataset):
                 temp_fp_1 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
                 temp_tn_1 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
                 temp_fn_1 = np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
+                total_pixels_1 = temp_tp_1+temp_fp_1+temp_tn_1+temp_fn_1
+                temp_p1 = temp_tp_1/(temp_tp_1+temp_fp_1)
+                temp_r1 = temp_tp_1/(temp_tp_1+temp_fn_1)
 
-                cur_tp[0] += temp_tp_1
-                cur_fp[0] += temp_fp_1
-                cur_tn[0] += temp_tn_1
-                cur_fn[0] += temp_fn_1
-                cur_p1.append(temp_tp_1/(temp_tp_1+temp_fp_1))
-                cur_r1.append(temp_tp_1/(temp_tp_1+temp_fn_1))
+                cur_tp[0].append(temp_tp_1/total_pixels_1)
+                cur_fp[0].append(temp_fp_1/total_pixels_1)
+                cur_tn[0].append(temp_tn_1/total_pixels_1)
+                cur_fn[0].append(temp_fn_1/total_pixels_1)
+                cur_p[0].append(temp_p1)
+                cur_p[1].append(temp_p1)
+                cur_r[0].append(temp_r1)
+                cur_r[1].append(temp_r1)
+                cur_f1[0].append(2*temp_r1*temp_p1/(temp_r1+temp_p1))
+                cur_f1[1].append(2*temp_r1*temp_p1/(temp_r1+temp_p1))
 
                 # Small
                 if gt_area < 32^9:
@@ -833,10 +844,10 @@ class CocoDataset(CustomDataset):
                 cur_cg[0] += 1    
                 cur_cg[area_i] += 1    
 
-                cur_tp[area_i] += np.count_nonzero(np.logical_and(gt_mask,dt_mask))
-                cur_fp[area_i] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
-                cur_tn[area_i] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
-                cur_fn[area_i] += np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
+                cur_tp[area_i].append(temp_tp_1/total_pixels_1)
+                cur_fp[area_i].append(temp_fp_1/total_pixels_1)
+                cur_tn[area_i].append(temp_tn_1/total_pixels_1)
+                cur_fn[area_i].append(temp_fn_1/total_pixels_1)
 
                 # METHOD 2
 
@@ -849,13 +860,20 @@ class CocoDataset(CustomDataset):
                 temp_fp_2 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),dt_mask_union))
                 temp_tn_2 = np.count_nonzero(np.logical_and(np.logical_not(gt_mask_union),np.logical_not(dt_mask_union)))
                 temp_fn_2 = np.count_nonzero(np.logical_and(gt_mask_union,np.logical_not(dt_mask_union)))
+                total_pixels_2 = temp_tp_2+temp_fp_2+temp_tn_2+temp_fn_2
+                temp_p2 = temp_tp_2/(temp_tp_2+temp_fp_2)
+                temp_r2 = temp_tp_2/(temp_tp_2+temp_fn_2)
 
-                cur_tp[4] += temp_tp_2
-                cur_fp[4] += temp_fp_2
-                cur_tn[4] += temp_tn_2
-                cur_fn[4] += temp_fn_2
-                cur_p2.append(temp_tp_2/(temp_tp_2+temp_fp_2))
-                cur_r2.append(temp_tp_2/(temp_tp_2+temp_fn_2))
+                cur_tp[4].append(temp_tp_2/total_pixels_2)
+                cur_fp[4].append(temp_fp_2/total_pixels_2)
+                cur_tn[4].append(temp_tn_2/total_pixels_2)
+                cur_fn[4].append(temp_fn_2/total_pixels_2)
+                cur_p[2].append(temp_p2)
+                cur_p[3].append(temp_p2)
+                cur_r[2].append(temp_r2)
+                cur_r[3].append(temp_r2)
+                cur_f1[2].append(2*temp_r2*temp_p2/(temp_r2+temp_p2))
+                cur_f1[3].append(2*temp_r2*temp_p2/(temp_r2+temp_p2))
 
                 # Small
                 if union_area < 32^9:
@@ -867,10 +885,10 @@ class CocoDataset(CustomDataset):
                 else:
                     area_j = 7
 
-                cur_tp[area_j] += np.count_nonzero(np.logical_and(gt_mask,dt_mask))
-                cur_fp[area_j] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),dt_mask))
-                cur_tn[area_j] += np.count_nonzero(np.logical_and(np.logical_not(gt_mask),np.logical_not(dt_mask)))
-                cur_fn[area_j] += np.count_nonzero(np.logical_and(gt_mask,np.logical_not(dt_mask)))
+                cur_tp[area_j].append(temp_tp_2/total_pixels_2)
+                cur_fp[area_j].append(temp_fp_2/total_pixels_2)
+                cur_tn[area_j].append(temp_tn_2/total_pixels_2)
+                cur_fn[area_j].append(temp_fn_2/total_pixels_2)
 
             for img in dt_unmatched:
                 cur_bbox = img['bbox']
@@ -889,6 +907,13 @@ class CocoDataset(CustomDataset):
 
                 cur_ig[0] += 1    
                 cur_ig[area_k] += 1 
+                
+                cur_p[0].append(0.0)
+                cur_p[2].append(0.0)
+                cur_r[0].append(0.0)
+                cur_r[2].append(0.0)
+                cur_f1[0].append(0.0)
+                cur_f1[2].append(0.0)
 
             for img in gt_unmatched:
                 cur_bbox = img['bbox']
@@ -899,7 +924,7 @@ class CocoDataset(CustomDataset):
                 if cur_area < 32^9:
                     area_w = 1
                 # Medium    
-                elif cur_area <= 96^2:
+                elif cur_area <= 64^2:
                     area_w = 2
                 # Large
                 else:
@@ -908,6 +933,13 @@ class CocoDataset(CustomDataset):
                 cur_ng[0] += 1
                 cur_ng[area_w] += 1 
                 
+                cur_p[0].append(0.0)
+                cur_p[2].append(0.0)
+                cur_r[0].append(0.0)
+                cur_r[2].append(0.0)
+                cur_f1[0].append(0.0)
+                cur_f1[2].append(0.0)
+                
             tp[imgId] = cur_tp.copy()
             fp[imgId] = cur_fp.copy()
             tn[imgId] = cur_tn.copy()
@@ -915,23 +947,21 @@ class CocoDataset(CustomDataset):
             cg[imgId] = cur_cg.copy()
             ig[imgId] = cur_ig.copy()
             ng[imgId] = cur_ng.copy()
-            p1[imgId] = cur_p1.copy()
-            p2[imgId] = cur_p2.copy()
-            r1[imgId] = cur_r1.copy()
-            r2[imgId] = cur_r2.copy()
+            p[imgId] = cur_p.copy()
+            r[imgId] = cur_r.copy()
+            f1[imgId] = cur_f1.copy()
                 
         return {
             'tp': tp,
             'fp': fp,
             'tn': tn,
             'fn': fn,
+            'p': p,
+            'r': r,
+            "f1": f1,
             'cg': cg,
             'ig': ig,
             'ng': ng,
-            'p1': p1,
-            'p2': p2,
-            'r1': r1,
-            'r2': r2,
         }     
     
     def gt_return(self):
