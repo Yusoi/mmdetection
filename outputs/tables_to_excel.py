@@ -6,14 +6,15 @@ import pandas as pd
 
 
 def main():
-    folder = "cur_tables"
+    folder = "aa_vc"
 
     result_dict = {}
 
-    writer = pd.ExcelWriter("compare_a.xlsx", engine='xlsxwriter')
+    writer = pd.ExcelWriter(folder+"/"+folder+".xlsx", engine='xlsxwriter')
 
-    _list = glob.glob(folder+"/*.csv")
+    _list = glob.glob(folder+"/tables/*.csv")
     _list.sort()
+    print(_list)
 
     for file in _list:
         name = os.path.splitext(file)[0].split("/")[-1]

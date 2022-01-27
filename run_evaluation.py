@@ -13,6 +13,8 @@ DEVIATION_THRESHOLD = 0.5
 DEVIATION_THRESHOLD_EVAL = 0.5
 #For Weighted Average
 AVERAGE_ACCEPTABILITY_2 = 0.5
+#Checkpoint for network
+CHECKPOINT = ""
 
 #SEGMENTATION MODEL DICTIONARY
 model_dict = {}
@@ -67,6 +69,47 @@ model_dict = list(model_dict.items())
 test_config = 'configs/common/mstrain-poly_3x_coco_instance.py'
 #test_config = 'configs/_base_/datasets/cityscapes_instance.py'
 dataset_name = os.path.splitext(test_config)[0].split('/')[-1]
+
+#NEURAL NETWORK
+
+from network_definitions.u_net import UNet
+from network_definitions.fcn import FCN32s as FCN
+from network_definitions.simple_network import SimpleNet
+from network_definitions.pyramid_network import PyramidNet
+import math
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.nn import init
+import torch
+import torch.optim as optim
+
+from skimage.transform import resize
+from torchvision import transforms, utils
+
+class Resize(object):
+    def __init__(self, size):
+        self.size = size
+
+    def __call__(self,sample):
+        im_seg,im_res = sample["name"],sample["valid"],sample["im_seg"],sample["im_res"]
+        
+        return {"name": name, "valid": valid, "im_seg": resize(im_seg,(self.size,self.size,N_CHANNELS),preserve_range=True), "im_res": resize(im_res,(self.size,self.size,1),preserve_range=True)}
+
+class ToTensor(object):
+    """Convert ndarrays in sample to Tensors."""
+
+    def __call__(self, sample):
+        name,valid,im_seg,im_res = sample["name"],sample["valid"],sample["im_seg"],sample["im_res"]
+
+        # swap color axis because
+        # numpy image: H x W x C
+        # torch image: C x H x W
+        im_seg = im_seg.transpose((2, 0, 1))
+        im_res = im_res.transpose((2, 0, 1))
+        return {"name": name, 
+                "valid": valid,
+                "im_seg": torch.from_numpy(im_seg),
+                "im_res": torch.from_numpy(im_res)}
 
 #AUXILIARY FUNCTIONS
 
@@ -305,7 +348,7 @@ def gather_results(model_dict: Dict[str,Tuple[str,str,str]], score_thr: float, p
             raise(Exception("Dataset sizes are not compatible"))
     return ensemble_results,classes,dataset_compatible
 
-def group_instances(dataset,model_dict,ensemble_results, labels: List[str], dataset_size, score_thr, threshold, ensemble_method):
+def group_instances(dataset,model_dict,ensemble_results, labels: List[str], dataset_size, score_thr, threshold, ensemble_method, net=None):
     #ensemble_results[model][image][bbox or segm][label][instance]
     final_results = []
     n_models = len(ensemble_results)
@@ -315,9 +358,11 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
         segm_group = []
         
         if ensemble_method == "network":
+            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
             filename = dataset[img]['img_metas'][0].data['filename']
             ori_img_size = dataset[img]['img_metas'][0].data['ori_shape']
-            transform = transforms.Compose([Resize((572,572)),ToTensor()])
+            transform = transforms.Compose([transforms.ToTensor(),
+                                            transforms.Resize((572,572),interpolation=transforms.InterpolationMode.NEAREST)])
             image = Image.open(filename)
             img_array = np.asarray(image)
 
@@ -391,21 +436,27 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
                                 return_group = []
                                 for x in range(len(cur_instance_group)):
                                     if cur_instance_group[x] is None:
-                                        return_group.append(np.zeros(ori_img_size,dtype=np.uint8))
+                                        return_group.append(np.zeros((ori_img_size[0],ori_img_size[1],1),dtype=np.uint8))
                                     else:
                                         return_group.append(mask_util.decode(cur_instance_group[x][1]))
                                 pred_stack = np.dstack(return_group)
                                 #network_input = transform(np.dstack((img_array,pred_stack)))[None,:].float().to(device)
                                 network_input = transform(pred_stack)[None,:].float().to(device)
                                 mask = net(network_input)
-
+                                
+                                img_size = (ori_img_size[0],ori_img_size[1])
+                                mask = transforms.Resize(img_size,interpolation=transforms.InterpolationMode.NEAREST)(mask)
                                 mask = mask.cpu().detach()
                                 mask = mask.numpy().squeeze(axis=0).transpose((1,2,0)).squeeze(axis=2)
-                                mask = mask > -7
+                                
+                                print(np.max(mask))
+                                
+                                
+                                #mask = mask > 0.5
 
-                                fig = plt.figure()
+                                """fig = plt.figure()
                                 plt.imshow(mask,cmap='gray')
-                                plt.show()
+                                plt.show()"""
                                 img_size = (ori_img_size[0],ori_img_size[1])
                                 segmentation = mask.astype("uint8")
                                 
@@ -446,7 +497,6 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
                                 segmentation = np.zeros(img_size).astype(bool)
                                 segmentation[bbox[1]:bbox[1]+bbox_y,bbox[0]:bbox[0]+bbox_x] = mask
                             
-                            
                             bbox = bbox.astype(float)
                             bbox[4] = confidence
                             bbox_results.append(np.array(bbox))
@@ -462,9 +512,9 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
 
 
 
-def run_ensemble(dataset, model_dict: Dict[str,Tuple[str,str,str]], score_thr: float, person_only: bool, ensemble_method: str, result_type='segm'):
+def run_ensemble(dataset, model_dict: Dict[str,Tuple[str,str,str]], score_thr: float, person_only: bool, ensemble_method: str, result_type='segm', net=None):
     ensemble_results,classes,dataset_size = gather_results(model_dict,score_thr,person_only,result_type)
-    results = group_instances(dataset,model_dict,ensemble_results,classes,dataset_size,score_thr,DEVIATION_THRESHOLD,ensemble_method)
+    results = group_instances(dataset,model_dict,ensemble_results,classes,dataset_size,score_thr,DEVIATION_THRESHOLD,ensemble_method,net=net)
     #Force garbage collection in order to release memory
     return results
 
@@ -472,7 +522,7 @@ def run_ensemble(dataset, model_dict: Dict[str,Tuple[str,str,str]], score_thr: f
 
 import pickle
 
-def ensemble_and_evaluate(model_dict,order):
+def ensemble_and_evaluate(model_dict,net=None):
     
     """title = "results/"+('|'.join(str(e) for e in order))+"_e="+str(ENSEMBLE_METHOD)+"_c="+str(CREDIBILITY_THRESHOLD)+"_v="+str(VIABLE_COUNTABILITY)+"_d="+str(DEVIATION_THRESHOLD)
     if ENSEMBLE_METHOD == 'average':
@@ -513,7 +563,7 @@ def ensemble_and_evaluate(model_dict,order):
         dist=distributed,
         shuffle=False)
     
-    results = run_ensemble(dataset,model_dict, CREDIBILITY_THRESHOLD,True,ENSEMBLE_METHOD,result_type='segm')
+    results = run_ensemble(dataset,model_dict, CREDIBILITY_THRESHOLD,True,ENSEMBLE_METHOD,result_type='segm',net=net)
 
     bc_info = dataset.custom_evaluate(results,DEVIATION_THRESHOLD_EVAL)
     
@@ -597,7 +647,7 @@ def ordering_recursion(models, missing_iterations, used_array, order_array):
             ordered_model_dict.append(models[order_array[i]])
             print(ordered_model_dict[i][0],end=" -> ")
         print("")
-        ensemble_and_evaluate(ordered_model_dict,order_array)
+        ensemble_and_evaluate(ordered_model_dict)#,order_array)
     else:
         for i in range(0, len(models)):
             if not used_array[i]:
@@ -615,7 +665,7 @@ def non_ordered_recursion(models, next_model, missing_iterations, used_array, or
             ordered_model_dict.append(models[order_array[i]])
             print(ordered_model_dict[i][0],end=" -> ")
         print("")
-        ensemble_and_evaluate(ordered_model_dict,order_array)
+        ensemble_and_evaluate(ordered_model_dict)#,order_array)
     else:
         for i in range(next_model, len(models)):
             if not used_array[i]:
@@ -651,9 +701,11 @@ def main():
                         help='Average Acceptability 2: Affects the amount of confidence required for a pixel to make it into the final mask in weighted average (Between 0 and 1)')
     parser.add_argument('-d','--deviation_threshold',
                         help='Deviation Threshold: Defines the minimum amount of IoU in order for an instance to be part of another')
+    parser.add_argument('-ck','--checkpoint')
 
     args = parser.parse_args()
 
+    checkpoint=""
 
     try:
         if args.ordered == 'True':
@@ -675,7 +727,7 @@ def main():
             dataset_name = os.path.splitext(test_config)[0].split('/')[-1]
 
         if args.ensemble_method:
-            if args.ensemble_method in ['average','weighted_average','bitwise_or','bitwise_and']:
+            if args.ensemble_method in ['average','weighted_average','bitwise_or','bitwise_and','network']:
                 global ENSEMBLE_METHOD
                 ENSEMBLE_METHOD = args.ensemble_method
             else:
@@ -708,7 +760,11 @@ def main():
                 global DEVIATION_THRESHOLD
                 DEVIATION_THRESHOLD = float(args.deviation_threshold)
             else:
-                raise(TypeError('\'deviation_threshold\' must be between 0 or 1'))       
+                raise(TypeError('\'deviation_threshold\' must be between 0 or 1'))  
+            
+        if args.checkpoint:
+            chkp = args.checkpoint  
+               
     except TypeError as err:
         print(err)
     
@@ -721,8 +777,33 @@ def main():
     print("Average Acceptability",AVERAGE_ACCEPTABILITY)
     print("Average Acceptability 2",AVERAGE_ACCEPTABILITY_2)
     print("Deviation Threshold",DEVIATION_THRESHOLD)
+    print("Checkpoint",CHECKPOINT)
 
-    perm_results = ensemble_permutations(model_dict,ordered)
+
+    if ENSEMBLE_METHOD == "network":
+        
+        checkpoint = torch.load(chkp)
+        layer_list = chkp.split("/")[1].split("_")[1:]
+        layers = [int(i) for i in layer_list]
+        
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        net = SimpleNet(5,layers,activation="sigmoid").float().to(device)
+
+        criterion = nn.BCEWithLogitsLoss()
+        optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+        
+
+        
+        net.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        epoch = checkpoint['epoch']
+        loss = checkpoint['loss']
+        net.eval()
+        
+        perm_results = ensemble_and_evaluate(model_dict,net=net)
+    else:
+        perm_results = ensemble_permutations(model_dict,ordered)
 
 if __name__ == "__main__":
     main()

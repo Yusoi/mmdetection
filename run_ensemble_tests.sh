@@ -4,21 +4,13 @@ ORDERED=False
 
 for DATASET in coco
 do
-    for VIABLE_COUNTABILITY in 0
+    for ENSEMBLE_METHOD in "network"
     do
-        for AVERAGE_ACCEPTABILITY in -1 0 1
+        for CHECKPOINT in "work_dirs/simplenet_1/sigmoid_BCELoss/epoch_25.pt"
         do
-            python run_evaluation.py "$ORDERED" -data "$DATASET" -v "$VIABLE_COUNTABILITY" -a "$AVERAGE_ACCEPTABILITY" \
-                                        > outputs/aa_vc/results/v="$VIABLE_COUNTABILITY"_a="$AVERAGE_ACCEPTABILITY".txt
-        done
-    done
-
-    for VIABLE_COUNTABILITY in -1 1
-    do
-        for AVERAGE_ACCEPTABILITY in 0
-        do
-            python run_evaluation.py "$ORDERED" -data "$DATASET" -v "$VIABLE_COUNTABILITY" -a "$AVERAGE_ACCEPTABILITY" \
-                                        > outputs/aa_vc/results/v="$VIABLE_COUNTABILITY"_a="$AVERAGE_ACCEPTABILITY".txt
+        
+            python run_evaluation.py "$ORDERED" -data "$DATASET" -e "$ENSEMBLE_METHOD" -ck "$CHECKPOINT" \
+                                        > outputs/network/results/simplenet_1.txt
         done
     done
 done

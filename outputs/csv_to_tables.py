@@ -7,12 +7,12 @@ def comp(a):
 
 
 def main():
-    folder = "csv_results_coco"
+    folder = "aa_vc/csv"
+    output_folder = "aa_vc/tables"
 
     result_dict = {}
 
-    #files = sorted(glob.glob(folder+"/*.csv"), key=comp)
-    files = sorted(glob.glob(folder+"/coco_average*v=0*.csv"))
+    files = sorted(glob.glob(folder+"/*.csv"))
 
     print(files)
 
@@ -20,8 +20,8 @@ def main():
         f = open(file,"r")
 
         first_line = np.array(f.readline().strip().split(";"))
-        order = first_line[0:5]
-        parameter_list = first_line[5:]
+        order = first_line[0:10]
+        parameter_list = first_line[10:]
         results = []
         
         line = f.readline()
@@ -30,8 +30,9 @@ def main():
             results.append(split_line)
             line = f.readline()
 
-        order = np.array(results)[:,0:5]
-        results = np.array(results).transpose()[5:]
+        order = np.array(results)[:,0:10]
+        results = np.array(results).transpose()[10:]
+        
 
         result_dict[os.path.splitext(file)[0].split("/")[-1]] = results
 
@@ -39,11 +40,11 @@ def main():
 
     ensembles = ";"+";".join(result_dict.keys())+"\n"
 
-    for f in glob.glob('cur_tables/*'):
+    for f in glob.glob(output_folder+"/*"):
         os.remove(f)
 
     for nr,param in enumerate(parameter_list): 
-        result_file = open("cur_tables/"+param+".csv","w")
+        result_file = open(output_folder+"/"+param+".csv","w")
         result_file.write(ensembles)
         for n,r in enumerate(final[nr]):
             result_file.write("-".join(order[n].tolist())+";"+";".join(r.tolist())+"\n")

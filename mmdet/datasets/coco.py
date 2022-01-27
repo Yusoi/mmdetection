@@ -988,7 +988,7 @@ class CocoDataset(CustomDataset):
         for gt in gts:
             gt['ignore'] = gt['ignore'] if 'ignore' in gt else 0
             gt['ignore'] = 'iscrowd' in gt and gt['iscrowd']
-        _gts = defaultdict(list)       # gt for evaluation
+        _gts = defaultdict(list)       # gt for evaluation    
         for gt in gts:
             if gt['category_id'] == 1:
                 _gts[gt['image_id']].append(gt)
