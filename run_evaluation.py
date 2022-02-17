@@ -19,7 +19,7 @@ CHECKPOINT = ""
 #SEGMENTATION MODEL DICTIONARY
 model_dict = {}
 
-#Mask R-CNN
+"""#Mask R-CNN
 model_dict['mask_rcnn_X-101-64x4d-FPN'] = (('configs/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py',
                                             'checkpoints/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth',
                                             'https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth'))
@@ -39,8 +39,6 @@ model_dict['cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco'] = (('configs/
 model_dict['detectors_htc_r101_20e_coco'] = (('configs/detectors/detectors_htc_r101_20e_coco.py',
                                               'checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth',
                                               'https://download.openmmlab.com/mmdetection/v2.0/detectors/detectors_htc_r101_20e_coco/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth'))
-
-"""
 #GCNet
 model_dict['gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)'] = (('configs/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco.py',
                                                                 'checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth',
@@ -62,9 +60,25 @@ model_dict['mask_rcnn_r101_fpn_gn-all_3x_coco'] = (('configs/gn/mask_rcnn_r101_f
 model_dict['mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco'] = (('configs/gn+ws/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco.py',
                                                               'checkpoints/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco_20200213-57b5a50f.pth',
                                                               'https://download.openmmlab.com/mmdetection/v2.0/gn%2Bws/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco_20200213-57b5a50f.pth'))
-"""
 
-model_dict = list(model_dict.items())
+model_dict = list(model_dict.items())"""
+
+model_dict = []
+model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco.py',
+                                                                    'checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth',
+                                                                    'https://download.openmmlab.com/mmdetection/v2.0/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth')))
+model_dict.append(('detectors_htc_r101_20e_coco',('configs/detectors/detectors_htc_r101_20e_coco.py',
+                                                  'checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth',
+                                                  'https://download.openmmlab.com/mmdetection/v2.0/detectors/detectors_htc_r101_20e_coco/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth')))
+model_dict.append(('cascade_mask_rcnn_X-101-64x4d-FPN',('configs/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco.py',
+                                                        'checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth',
+                                                        'https://download.openmmlab.com/mmdetection/v2.0/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth')))
+model_dict.append(('cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco',('configs/dcn/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco.py',
+                                                                           'checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth',
+                                                                           'https://download.openmmlab.com/mmdetection/v2.0/dcn/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth')))
+model_dict.append(('gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)',('configs/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco.py',
+                                                                    'checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth',
+                                                                    'https://download.openmmlab.com/mmdetection/v2.0/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth')))
 
 test_config = 'configs/common/mstrain-poly_3x_coco_instance.py'
 #test_config = 'configs/_base_/datasets/cityscapes_instance.py'
@@ -571,48 +585,30 @@ def ensemble_and_evaluate(model_dict,net=None):
     print("TP","{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[0]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[1]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[3]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[4]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[5]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[6]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[7]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['tp'].values()) for j in sub[3]])))
     print("FP","{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[0]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[1]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[3]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[4]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[5]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[6]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[7]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['fp'].values()) for j in sub[3]])))
     print("TN","{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[0]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[1]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[3]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[4]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[5]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[6]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[7]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['tn'].values()) for j in sub[3]])))
     print("FN","{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[0]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[1]])),
             "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[3]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[4]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[5]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[6]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[7]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['fn'].values()) for j in sub[3]])))
 
+    print("OA","{:.5f}".format(np.average([j for sub in list(bc_info['oa'].values()) for j in sub[0]])),
+            "{:.5f}".format(np.average([j for sub in list(bc_info['oa'].values()) for j in sub[1]])))
     print("P","{:.5f}".format(np.average([j for sub in list(bc_info['p'].values()) for j in sub[0]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['p'].values()) for j in sub[1]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['p'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['p'].values()) for j in sub[3]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['p'].values()) for j in sub[1]])))
     print("R","{:.5f}".format(np.average([j for sub in list(bc_info['r'].values()) for j in sub[0]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['r'].values()) for j in sub[1]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['r'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['r'].values()) for j in sub[3]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['r'].values()) for j in sub[1]])))
     print("F1","{:.5f}".format(np.average([j for sub in list(bc_info['f1'].values()) for j in sub[0]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['f1'].values()) for j in sub[1]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['f1'].values()) for j in sub[2]])),
-            "{:.5f}".format(np.average([j for sub in list(bc_info['f1'].values()) for j in sub[3]])))
+            "{:.5f}".format(np.average([j for sub in list(bc_info['f1'].values()) for j in sub[1]])))
+    print("IoU","{:.5f}".format(np.average([j for sub in list(bc_info['iou'].values()) for j in sub[0]])),
+            "{:.5f}".format(np.average([j for sub in list(bc_info['iou'].values()) for j in sub[1]])))
 
     cg_list = list(bc_info['cg'].values())
     ig_list = list(bc_info['ig'].values())
@@ -621,23 +617,47 @@ def ensemble_and_evaluate(model_dict,net=None):
     ig = np.sum(ig_list,axis=0)
     ng = np.sum(ng_list,axis=0)
 
+    ideal_guesses = sum([cg[0],ng[0]])
     total_guesses = sum([cg[0],ig[0],ng[0]])
+    ideal_guesses_small = sum([cg[1],ng[1]])
     total_guesses_small = sum([cg[1],ig[1],ng[1]])
+    ideal_guesses_medium = sum([cg[2],ng[2]])
     total_guesses_medium = sum([cg[2],ig[2],ng[2]])
+    ideal_guesses_large = sum([cg[3],ng[3]])
     total_guesses_large = sum([cg[3],ig[3],ng[3]])
 
-    print("CG",cg[0],"{:.5f}".format(cg[0]/total_guesses),
-            cg[1],"{:.5f}".format(cg[1]/total_guesses_small),
-            cg[2],"{:.5f}".format(cg[2]/total_guesses_medium),
-            cg[3],"{:.5f}".format(cg[3]/total_guesses_large))
-    print("IG",ig[0],"{:.5f}".format(ig[0]/total_guesses),
-            ig[1],"{:.5f}".format(ig[1]/total_guesses_small),
-            ig[2],"{:.5f}".format(ig[2]/total_guesses_medium),
-            ig[3],"{:.5f}".format(ig[3]/total_guesses_large))
-    print("NG",ng[0],"{:.5f}".format(ng[0]/total_guesses),
-            ng[1],"{:.5f}".format(ng[1]/total_guesses_small),
-            ng[2],"{:.5f}".format(ng[2]/total_guesses_medium),
-            ng[3],"{:.5f}".format(ng[3]/total_guesses_large))
+    print("CG","{:.5f}".format(cg[0]/ideal_guesses),
+            "{:.5f}".format(cg[1]/ideal_guesses_small),
+            "{:.5f}".format(cg[2]/ideal_guesses_medium),
+            "{:.5f}".format(cg[3]/ideal_guesses_large))
+    print("TCG","{:.5f}".format(cg[0]/total_guesses),
+            "{:.5f}".format(cg[1]/total_guesses_small),
+            "{:.5f}".format(cg[2]/total_guesses_medium),
+            "{:.5f}".format(cg[3]/total_guesses_large))
+    print("NG","{:.5f}".format(ng[0]/ideal_guesses),
+            "{:.5f}".format(ng[1]/ideal_guesses_small),
+            "{:.5f}".format(ng[2]/ideal_guesses_medium),
+            "{:.5f}".format(ng[3]/ideal_guesses_large))
+    print("TNG","{:.5f}".format(ng[0]/total_guesses),
+            "{:.5f}".format(ng[1]/total_guesses_small),
+            "{:.5f}".format(ng[2]/total_guesses_medium),
+            "{:.5f}".format(ng[3]/total_guesses_large))
+    print("TIG","{:.5f}".format(ig[0]/total_guesses),
+            "{:.5f}".format(ig[1]/total_guesses_small),
+            "{:.5f}".format(ig[2]/total_guesses_medium),
+            "{:.5f}".format(ig[3]/total_guesses_large))
+    print("UGR11","{:.5f}".format((ng[0]+ig[0])/cg[0]),
+            "{:.5f}".format((ng[1]+ig[1])/cg[1]),
+            "{:.5f}".format((ng[2]+ig[2])/cg[2]),
+            "{:.5f}".format((ng[3]+ig[3])/cg[3]))
+    print("UGR31","{:.5f}".format(((3*ng[0])+ig[0])/cg[0]),
+            "{:.5f}".format(((3*ng[1])+ig[1])/cg[1]),
+            "{:.5f}".format(((3*ng[2])+ig[2])/cg[2]),
+            "{:.5f}".format(((3*ng[3])+ig[3])/cg[3]))
+    print("UGR13","{:.5f}".format((ng[0]+(3*ig[0]))/cg[0]),
+            "{:.5f}".format((ng[1]+(3*ig[1]))/cg[1]),
+            "{:.5f}".format((ng[2]+(3*ig[2]))/cg[2]),
+            "{:.5f}".format((ng[3]+(3*ig[3]))/cg[3]))
 
 def ordering_recursion(models, missing_iterations, used_array, order_array):
     if missing_iterations == 0:
@@ -677,7 +697,7 @@ def non_ordered_recursion(models, next_model, missing_iterations, used_array, or
 
 def ensemble_permutations(models, ordered):
     used_array = [False] * len(models)
-    for i in range(1,len(models)+1):
+    for i in [1]:#range(1,len(models)+1):
         if ordered:
             ordering_recursion(models, i, used_array, [])
         else:
@@ -791,9 +811,6 @@ def main():
 
         criterion = nn.BCEWithLogitsLoss()
         optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-
-        
-
         
         net.load_state_dict(checkpoint['model_state_dict'])
         optimizer.load_state_dict(checkpoint['optimizer_state_dict'])

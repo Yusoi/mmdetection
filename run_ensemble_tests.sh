@@ -4,13 +4,9 @@ ORDERED=False
 
 for DATASET in coco
 do
-    for ENSEMBLE_METHOD in "network"
+    for CREDIBILITY_THRESHOLD in 0.55
     do
-        for CHECKPOINT in "work_dirs/simplenet_1_1/sigmoid_BCELoss/epoch_25.pt"
-        do
-        
-            python run_evaluation.py "$ORDERED" -data "$DATASET" -e "$ENSEMBLE_METHOD" -ck "$CHECKPOINT" \
-                                        > outputs/network/results/simplenet_1_1.txt
-        done
+            python run_evaluation.py "$ORDERED" -data "$DATASET" -c "$CREDIBILITY_THRESHOLD" \
+                                        > outputs/ct/results/"$CREDIBILITY_THRESHOLD".txt
     done
 done

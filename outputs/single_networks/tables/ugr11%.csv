@@ -1,0 +1,11 @@
+network_order;results
+mask_rcnn_X-101-64x4d-FPN;0.46797
+cascade_mask_rcnn_X-101-64x4d-FPN;0.46408
+hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN;0.43515
+cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco;0.45900
+detectors_htc_r101_20e_coco;0.45017
+gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4);0.46059
+scnet_X-101-64x4d-FPN;0.47694
+mask_rcnn_r50_fpn_carafe_1x_coco;0.54842
+mask_rcnn_r101_fpn_gn-all_3x_coco;0.61701
+mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco;0.49220

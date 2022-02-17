@@ -36,11 +36,21 @@ class SimpleNet(nn.Module):
             
         self.sequential = nn.Sequential(*cur_layers)
 
+        self.class_branch = nn.Sequential(nn.Conv2d(1, 1, kernel_size=3, stride=2),
+                                          nn.Conv2d(1, 1, kernel_size=3, stride=2),
+                                          nn.Conv2d(1, 1, kernel_size=3, stride=2),
+                                          nn.Flatten(),
+                                          nn.LazyLinear(1024),
+                                          nn.LeakyReLU(),
+                                          nn.LazyLinear(1),
+                                          nn.Sigmoid())
+        
         self.threshold = threshold
 
     def forward(self, x):
         x = self.sequential(x)
-        return x
+        classification = self.class_branch(x)
+        return (x,classification)
 
 class Conv2D(nn.Module):
     def __init__(self, kernel_size, last):

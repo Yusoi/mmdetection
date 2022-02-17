@@ -7,8 +7,8 @@ def comp(a):
 
 
 def main():
-    folder = "aa_vc/csv"
-    output_folder = "aa_vc/tables"
+    folder = "ct/csv"
+    output_folder = "ct/tables"
 
     result_dict = {}
 
@@ -20,8 +20,8 @@ def main():
         f = open(file,"r")
 
         first_line = np.array(f.readline().strip().split(";"))
-        order = first_line[0:10]
-        parameter_list = first_line[10:]
+        initial_order = first_line[0:5]
+        parameter_list = first_line[5:]
         results = []
         
         line = f.readline()
@@ -30,15 +30,15 @@ def main():
             results.append(split_line)
             line = f.readline()
 
-        order = np.array(results)[:,0:10]
-        results = np.array(results).transpose()[10:]
+        order = np.array(results)[:,0:5]
+        results = np.array(results).transpose()[5:]
         
 
         result_dict[os.path.splitext(file)[0].split("/")[-1]] = results
 
     final = np.dstack(list(result_dict.values()))
 
-    ensembles = ";"+";".join(result_dict.keys())+"\n"
+    ensembles = "network_order;"+";".join(result_dict.keys())+"\n"
 
     for f in glob.glob(output_folder+"/*"):
         os.remove(f)
@@ -47,7 +47,17 @@ def main():
         result_file = open(output_folder+"/"+param+".csv","w")
         result_file.write(ensembles)
         for n,r in enumerate(final[nr]):
-            result_file.write("-".join(order[n].tolist())+";"+";".join(r.tolist())+"\n")
+            cur_order = list(zip(initial_order,order[n]))
+            cur_order.sort(key=lambda x:x[1])
+            while cur_order[0][1] == "0":
+                cur_order.pop(0)
+            cur_order = list(zip(*cur_order))[0]
+                   
+            print(param,cur_order)
+            
+            #order[n].tolist()
+            result_file.write("->".join(cur_order)+";")
+            result_file.write(";".join(r.tolist())+"\n")
         
 
             
