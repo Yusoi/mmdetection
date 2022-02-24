@@ -613,51 +613,64 @@ def ensemble_and_evaluate(model_dict,net=None):
     cg_list = list(bc_info['cg'].values())
     ig_list = list(bc_info['ig'].values())
     ng_list = list(bc_info['ng'].values())
-    cg = np.sum(cg_list,axis=0)
-    ig = np.sum(ig_list,axis=0)
-    ng = np.sum(ng_list,axis=0)
+    
+    if (not cg_list) or (not ig_list) or (not ng_list):
+        print("CG nan nan nan nan")
+        print("TCG nan nan nan nan")    
+        print("NG nan nan nan nan")
+        print("TNG nan nan nan nan")
+        print("TIG nan nan nan nan")
+        print("UGR11 nan nan nan nan")
+        print("UGR31 nan nan nan nan")
+        print("UGR13 nan nan nan nan")
+        
+    else:
 
-    ideal_guesses = sum([cg[0],ng[0]])
-    total_guesses = sum([cg[0],ig[0],ng[0]])
-    ideal_guesses_small = sum([cg[1],ng[1]])
-    total_guesses_small = sum([cg[1],ig[1],ng[1]])
-    ideal_guesses_medium = sum([cg[2],ng[2]])
-    total_guesses_medium = sum([cg[2],ig[2],ng[2]])
-    ideal_guesses_large = sum([cg[3],ng[3]])
-    total_guesses_large = sum([cg[3],ig[3],ng[3]])
+        cg = np.sum(cg_list,axis=0)
+        ig = np.sum(ig_list,axis=0)
+        ng = np.sum(ng_list,axis=0)
 
-    print("CG","{:.5f}".format(cg[0]/ideal_guesses),
-            "{:.5f}".format(cg[1]/ideal_guesses_small),
-            "{:.5f}".format(cg[2]/ideal_guesses_medium),
-            "{:.5f}".format(cg[3]/ideal_guesses_large))
-    print("TCG","{:.5f}".format(cg[0]/total_guesses),
-            "{:.5f}".format(cg[1]/total_guesses_small),
-            "{:.5f}".format(cg[2]/total_guesses_medium),
-            "{:.5f}".format(cg[3]/total_guesses_large))
-    print("NG","{:.5f}".format(ng[0]/ideal_guesses),
-            "{:.5f}".format(ng[1]/ideal_guesses_small),
-            "{:.5f}".format(ng[2]/ideal_guesses_medium),
-            "{:.5f}".format(ng[3]/ideal_guesses_large))
-    print("TNG","{:.5f}".format(ng[0]/total_guesses),
-            "{:.5f}".format(ng[1]/total_guesses_small),
-            "{:.5f}".format(ng[2]/total_guesses_medium),
-            "{:.5f}".format(ng[3]/total_guesses_large))
-    print("TIG","{:.5f}".format(ig[0]/total_guesses),
-            "{:.5f}".format(ig[1]/total_guesses_small),
-            "{:.5f}".format(ig[2]/total_guesses_medium),
-            "{:.5f}".format(ig[3]/total_guesses_large))
-    print("UGR11","{:.5f}".format((ng[0]+ig[0])/cg[0]),
-            "{:.5f}".format((ng[1]+ig[1])/cg[1]),
-            "{:.5f}".format((ng[2]+ig[2])/cg[2]),
-            "{:.5f}".format((ng[3]+ig[3])/cg[3]))
-    print("UGR31","{:.5f}".format(((3*ng[0])+ig[0])/cg[0]),
-            "{:.5f}".format(((3*ng[1])+ig[1])/cg[1]),
-            "{:.5f}".format(((3*ng[2])+ig[2])/cg[2]),
-            "{:.5f}".format(((3*ng[3])+ig[3])/cg[3]))
-    print("UGR13","{:.5f}".format((ng[0]+(3*ig[0]))/cg[0]),
-            "{:.5f}".format((ng[1]+(3*ig[1]))/cg[1]),
-            "{:.5f}".format((ng[2]+(3*ig[2]))/cg[2]),
-            "{:.5f}".format((ng[3]+(3*ig[3]))/cg[3]))
+        ideal_guesses = sum([cg[0],ng[0]])
+        total_guesses = sum([cg[0],ig[0],ng[0]])
+        ideal_guesses_small = sum([cg[1],ng[1]])
+        total_guesses_small = sum([cg[1],ig[1],ng[1]])
+        ideal_guesses_medium = sum([cg[2],ng[2]])
+        total_guesses_medium = sum([cg[2],ig[2],ng[2]])
+        ideal_guesses_large = sum([cg[3],ng[3]])
+        total_guesses_large = sum([cg[3],ig[3],ng[3]])
+
+        print("CG","{:.5f}".format(cg[0]/ideal_guesses),
+                "{:.5f}".format(cg[1]/ideal_guesses_small),
+                "{:.5f}".format(cg[2]/ideal_guesses_medium),
+                "{:.5f}".format(cg[3]/ideal_guesses_large))
+        print("TCG","{:.5f}".format(cg[0]/total_guesses),
+                "{:.5f}".format(cg[1]/total_guesses_small),
+                "{:.5f}".format(cg[2]/total_guesses_medium),
+                "{:.5f}".format(cg[3]/total_guesses_large))
+        print("NG","{:.5f}".format(ng[0]/ideal_guesses),
+                "{:.5f}".format(ng[1]/ideal_guesses_small),
+                "{:.5f}".format(ng[2]/ideal_guesses_medium),
+                "{:.5f}".format(ng[3]/ideal_guesses_large))
+        print("TNG","{:.5f}".format(ng[0]/total_guesses),
+                "{:.5f}".format(ng[1]/total_guesses_small),
+                "{:.5f}".format(ng[2]/total_guesses_medium),
+                "{:.5f}".format(ng[3]/total_guesses_large))
+        print("TIG","{:.5f}".format(ig[0]/total_guesses),
+                "{:.5f}".format(ig[1]/total_guesses_small),
+                "{:.5f}".format(ig[2]/total_guesses_medium),
+                "{:.5f}".format(ig[3]/total_guesses_large))
+        print("UGR11","{:.5f}".format((ng[0]+ig[0])/cg[0]),
+                "{:.5f}".format((ng[1]+ig[1])/cg[1]),
+                "{:.5f}".format((ng[2]+ig[2])/cg[2]),
+                "{:.5f}".format((ng[3]+ig[3])/cg[3]))
+        print("UGR31","{:.5f}".format(((3*ng[0])+ig[0])/cg[0]),
+                "{:.5f}".format(((3*ng[1])+ig[1])/cg[1]),
+                "{:.5f}".format(((3*ng[2])+ig[2])/cg[2]),
+                "{:.5f}".format(((3*ng[3])+ig[3])/cg[3]))
+        print("UGR13","{:.5f}".format((ng[0]+(3*ig[0]))/cg[0]),
+                "{:.5f}".format((ng[1]+(3*ig[1]))/cg[1]),
+                "{:.5f}".format((ng[2]+(3*ig[2]))/cg[2]),
+                "{:.5f}".format((ng[3]+(3*ig[3]))/cg[3]))
 
 def ordering_recursion(models, missing_iterations, used_array, order_array):
     if missing_iterations == 0:
@@ -697,7 +710,7 @@ def non_ordered_recursion(models, next_model, missing_iterations, used_array, or
 
 def ensemble_permutations(models, ordered):
     used_array = [False] * len(models)
-    for i in [1]:#range(1,len(models)+1):
+    for i in range(1,len(models)+1):
         if ordered:
             ordering_recursion(models, i, used_array, [])
         else:

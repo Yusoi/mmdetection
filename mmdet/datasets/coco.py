@@ -705,33 +705,33 @@ class CocoDataset(CustomDataset):
                 imgId = 0
                 tp, fp, tn, fn, oa, p, r, f1, cg, ig, ng, iou  = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
                 
-                # M2 / M2 Small / M2 Medium / M2 Large
-                cur_tp = [[],[],[],[]]
-                cur_fp = [[],[],[],[]]
-                cur_tn = [[],[],[],[]]
-                cur_fn = [[],[],[],[]]
-                # Method 2 All / Method 2 Correct
-                cur_oa = [[],[]]
-                cur_p = [[],[]]
-                cur_r = [[],[]]
-                cur_f1 = [[],[]]
-                cur_iou = [[],[]]
-                cur_cg = [0,0]
-                cur_ig = [0,0]
-                cur_ng = [0,0]
+                cur_tp = [[0],[0],[0],[0]]
+                cur_fp = [[0],[0],[0],[0]]
+                cur_tn = [[0],[0],[0],[0]]
+                cur_fn = [[0],[0],[0],[0]]
+                cur_oa = [[0],[0]]
+                cur_p = [[0],[0]]
+                cur_r = [[0],[0]]
+                cur_f1 = [[0],[0]]
+                cur_iou = [[0],[0]]
+                cur_cg = [0,0,0,0]
+                cur_ig = [0,0,0,0]
+                cur_ng = [0,0,0,0]
 
                 return {
                     'tp': tp,
                     'fp': fp,
                     'tn': tn,
                     'fn': fn,
+                    'oa': oa,
                     'p': p,
                     'r': r,
                     "f1": f1,
+                    'iou': iou,
                     'cg': cg,
                     'ig': ig,
                     'ng': ng,
-                }         
+                }           
         
         def _toMask(anns, coco):
             # modify ann['segmentation'] by reference
