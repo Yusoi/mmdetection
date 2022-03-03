@@ -49,9 +49,9 @@ model_dict['detectors_htc_r101_20e_coco'] = (('configs/detectors/detectors_htc_r
 model_dict = list(model_dict.items())"""
 
 model_dict = []
-model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco.py',
-                                                                    'checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth',
-                                                                    'https://download.openmmlab.com/mmdetection/v2.0/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth')))
+model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco.py',
+                                                                'checkpoints/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth',
+                                                                'https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth')))
 model_dict.append(('detectors_htc_r101_20e_coco',('configs/detectors/detectors_htc_r101_20e_coco.py',
                                                   'checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth',
                                                   'https://download.openmmlab.com/mmdetection/v2.0/detectors/detectors_htc_r101_20e_coco/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth')))

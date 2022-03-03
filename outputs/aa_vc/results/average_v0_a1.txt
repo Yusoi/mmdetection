@@ -1,40 +1,40 @@
 Ordered False
 Dataset mstrain-poly_3x_coco_instance
 Ensemble Method average
-Credibility Threshold 0.55
+Credibility Threshold 0.5
 Viable Countability 0
-Average Acceptability 0
+Average Acceptability 1
 Average Acceptability 2 0.5
 Deviation Threshold 0.5
 Checkpoint 
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> 
 loading annotations into memory...
-Done (t=0.31s)
+Done (t=0.30s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.04s)
 creating index...
 index created!
-TP 0.46201 0.46944 0.49268 0.46165
-FP 0.05048 0.13889 0.10261 0.04984
-TN 0.43540 0.31667 0.30613 0.43696
-FN 0.05211 0.07500 0.09858 0.05156
-OA 0.62920 0.89741
-P 0.63249 0.90210
-R 0.62903 0.89717
-F1 0.62754 0.89504
-IoU 0.57193 0.81574
-CG 0.77535 0.01099 0.43172 0.79630
-TCG 0.70112 0.01058 0.34146 0.72155
-NG 0.22465 0.98901 0.56828 0.20370
-TNG 0.20314 0.95238 0.44948 0.18458
-TIG 0.09574 0.03704 0.20906 0.09386
-UGR11 0.42628 93.50000 1.92857 0.38590
-UGR31 1.00574 273.50000 4.56122 0.89753
-UGR13 0.69938 100.50000 3.15306 0.64608
+TP nan nan nan nan
+FP nan nan nan nan
+TN nan nan nan nan
+FN nan nan nan nan
+OA 0.00000 nan
+P 0.00000 nan
+R 0.00000 nan
+F1 0.00000 nan
+IoU 0.00000 nan
+CG 0.00000 0.00000 0.00000 0.00000
+TCG 0.00000 0.00000 0.00000 0.00000
+NG 1.00000 1.00000 1.00000 1.00000
+TNG 0.58270 0.02353 1.00000 1.00000
+TIG 0.41730 0.97647 0.00000 0.00000
+UGR11 inf inf inf inf
+UGR31 inf inf inf inf
+UGR13 inf inf inf inf
 Model Order: detectors_htc_r101_20e_coco -> 
 loading annotations into memory...
 Done (t=0.24s)
@@ -43,54 +43,54 @@ index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
 load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.04s)
 creating index...
 index created!
-TP 0.46118 0.56771 0.49351 0.46079
-FP 0.04954 0.17188 0.10865 0.04884
-TN 0.43706 0.13542 0.30338 0.43863
-FN 0.05223 0.12500 0.09446 0.05174
-OA 0.62401 0.89824
-P 0.62767 0.90350
-R 0.62302 0.89681
-F1 0.62215 0.89556
-IoU 0.56732 0.81663
-CG 0.76942 0.01105 0.41441 0.79024
-TCG 0.69471 0.01047 0.31724 0.71567
-NG 0.23058 0.98895 0.58559 0.20976
-TNG 0.20819 0.93717 0.44828 0.18996
-TIG 0.09710 0.05236 0.23448 0.09437
-UGR11 0.43946 94.50000 2.15217 0.39729
-UGR31 1.03883 273.50000 4.97826 0.92815
-UGR13 0.71901 104.50000 3.63043 0.66101
+TP nan nan nan nan
+FP nan nan nan nan
+TN nan nan nan nan
+FN nan nan nan nan
+OA 0.00000 nan
+P 0.00000 nan
+R 0.00000 nan
+F1 0.00000 nan
+IoU 0.00000 nan
+CG 0.00000 0.00000 0.00000 0.00000
+TCG 0.00000 0.00000 0.00000 0.00000
+NG 1.00000 1.00000 1.00000 1.00000
+TNG 0.58308 0.02357 1.00000 1.00000
+TIG 0.41692 0.97643 0.00000 0.00000
+UGR11 inf inf inf inf
+UGR31 inf inf inf inf
+UGR13 inf inf inf inf
 Model Order: cascade_mask_rcnn_X-101-64x4d-FPN -> 
 loading annotations into memory...
-Done (t=0.26s)
+Done (t=0.18s)
 creating index...
 index created!
 Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.05s)
 creating index...
 index created!
-TP 0.45839 0.52288 0.49024 0.45800
-FP 0.04996 0.23335 0.09799 0.04934
-TN 0.43656 0.14669 0.30794 0.43813
-FN 0.05508 0.09708 0.10382 0.05452
-OA 0.61551 0.89495
-P 0.62043 0.90211
-R 0.61285 0.89108
-F1 0.61329 0.89173
-IoU 0.55742 0.81049
-CG 0.77053 0.02198 0.40444 0.79161
-TCG 0.68776 0.02162 0.30435 0.70828
-NG 0.22947 0.97802 0.59556 0.20839
-TNG 0.20482 0.96216 0.44816 0.18645
-TIG 0.10742 0.01622 0.24749 0.10526
-UGR11 0.45400 45.25000 2.28571 0.41187
-UGR31 1.04961 134.25000 5.23077 0.93836
-UGR13 0.76638 46.75000 3.91209 0.70910
+TP nan nan nan nan
+FP nan nan nan nan
+TN nan nan nan nan
+FN nan nan nan nan
+OA 0.00000 nan
+P 0.00000 nan
+R 0.00000 nan
+F1 0.00000 nan
+IoU 0.00000 nan
+CG 0.00000 0.00000 0.00000 0.00000
+TCG 0.00000 0.00000 0.00000 0.00000
+NG 1.00000 1.00000 1.00000 1.00000
+TNG 0.58182 0.02345 1.00000 1.00000
+TIG 0.41818 0.97655 0.00000 0.00000
+UGR11 inf inf inf inf
+UGR31 inf inf inf inf
+UGR13 inf inf inf inf
 Model Order: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
 Done (t=0.25s)
@@ -99,57 +99,57 @@ index created!
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.04s)
 creating index...
 index created!
-TP 0.46000 0.47361 0.48848 0.45971
-FP 0.05200 0.11597 0.10231 0.05146
-TN 0.43354 0.33472 0.31092 0.43484
-FN 0.05446 0.07569 0.09829 0.05400
-OA 0.61443 0.89354
-P 0.61826 0.89911
-R 0.61362 0.89236
-F1 0.61268 0.89100
-IoU 0.55641 0.80917
-CG 0.76580 0.02198 0.37220 0.78731
-TCG 0.68764 0.02116 0.28328 0.70885
-NG 0.23420 0.97802 0.62780 0.21269
-TNG 0.21030 0.94180 0.47782 0.19149
-TIG 0.10207 0.03704 0.23891 0.09965
-UGR11 0.45426 46.25000 2.53012 0.41073
-UGR31 1.06592 135.25000 5.90361 0.95102
-UGR13 0.75112 49.75000 4.21687 0.69189
+TP nan nan nan nan
+FP nan nan nan nan
+TN nan nan nan nan
+FN nan nan nan nan
+OA 0.00000 nan
+P 0.00000 nan
+R 0.00000 nan
+F1 0.00000 nan
+IoU 0.00000 nan
+CG 0.00000 0.00000 0.00000 0.00000
+TCG 0.00000 0.00000 0.00000 0.00000
+NG 1.00000 1.00000 1.00000 1.00000
+TNG 0.58273 0.02354 1.00000 1.00000
+TIG 0.41727 0.97646 0.00000 0.00000
+UGR11 inf inf inf inf
+UGR31 inf inf inf inf
+UGR13 inf inf inf inf
 Model Order: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.26s)
+Done (t=0.29s)
 creating index...
 index created!
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.04s)
 creating index...
 index created!
-TP 0.45900 0.48750 0.48365 0.45874
-FP 0.05187 0.03750 0.10935 0.05129
-TN 0.43398 0.35000 0.30908 0.43526
-FN 0.05515 0.12500 0.09792 0.05470
-OA 0.61247 0.89298
-P 0.61669 0.89912
-R 0.61105 0.89091
-F1 0.61056 0.89019
-IoU 0.55420 0.80802
-CG 0.76199 0.01099 0.38498 0.78289
-TCG 0.68588 0.01081 0.29603 0.70611
-NG 0.23801 0.98901 0.61502 0.21711
-TNG 0.21423 0.97297 0.47292 0.19581
-TIG 0.09989 0.01622 0.23105 0.09808
-UGR11 0.45799 91.50000 2.37805 0.41622
-UGR31 1.08268 271.50000 5.57317 0.97084
-UGR13 0.74927 94.50000 3.93902 0.69402
+TP nan nan nan nan
+FP nan nan nan nan
+TN nan nan nan nan
+FN nan nan nan nan
+OA 0.00000 nan
+P 0.00000 nan
+R 0.00000 nan
+F1 0.00000 nan
+IoU 0.00000 nan
+CG 0.00000 0.00000 0.00000 0.00000
+TCG 0.00000 0.00000 0.00000 0.00000
+NG 1.00000 1.00000 1.00000 1.00000
+TNG 0.58425 0.02368 1.00000 1.00000
+TIG 0.41575 0.97632 0.00000 0.00000
+UGR11 inf inf inf inf
+UGR31 inf inf inf inf
+UGR13 inf inf inf inf
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> 
 loading annotations into memory...
-Done (t=0.24s)
+Done (t=0.18s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -157,29 +157,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_ms
 Loading inference results from model: detectors_htc_r101_20e_coco
 load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46502 0.56181 0.50083 0.46454
-FP 0.05924 0.11458 0.12335 0.05842
-TN 0.43044 0.19028 0.29129 0.43226
-FN 0.04530 0.13333 0.08453 0.04478
-OA 0.62826 0.89546
-P 0.62295 0.88788
-R 0.63841 0.90992
-F1 0.62725 0.89402
-IoU 0.57125 0.81420
-CG 0.80616 0.01648 0.46320 0.82767
-TCG 0.70161 0.01523 0.32424 0.72352
-NG 0.19384 0.98352 0.53680 0.17233
-TNG 0.16870 0.90863 0.37576 0.15064
-TIG 0.12969 0.07614 0.30000 0.12584
-UGR11 0.42530 64.66667 2.08411 0.38214
-UGR31 0.90619 184.00000 4.40187 0.79855
-UGR13 0.79500 74.66667 3.93458 0.73001
+TP 0.45841 0.38889 0.48712 0.45808
+FP 0.03937 0.25000 0.08436 0.03881
+TN 0.44071 0.36111 0.31633 0.44221
+FN 0.06151 0.00000 0.11218 0.06091
+OA 0.55869 0.89912
+P 0.57246 0.92127
+R 0.54672 0.87985
+F1 0.55653 0.89563
+IoU 0.50745 0.81665
+CG 0.75244 0.00556 0.42105 0.77269
+TCG 0.62138 0.00060 0.35165 0.72148
+NG 0.24756 0.99444 0.57895 0.22731
+TNG 0.20444 0.10706 0.48352 0.21225
+TIG 0.17418 0.89234 0.16484 0.06628
+UGR11 0.60932 1671.00000 1.84375 0.38605
+UGR31 1.26736 2029.00000 4.59375 0.97441
+UGR13 1.16993 4655.00000 2.78125 0.56977
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> 
 loading annotations into memory...
-Done (t=0.29s)
+Done (t=0.23s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -190,23 +190,23 @@ Loading and preparing results...
 DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46374 0.50352 0.49620 0.46331
-FP 0.05897 0.16019 0.11220 0.05824
-TN 0.43028 0.23889 0.29844 0.43205
-FN 0.04701 0.09741 0.09316 0.04640
-OA 0.62370 0.89402
-P 0.61949 0.88799
-R 0.63246 0.90659
-F1 0.62251 0.89231
-IoU 0.56609 0.81144
-CG 0.80904 0.02747 0.45957 0.83069
-TCG 0.69763 0.02618 0.31487 0.71932
-NG 0.19096 0.97253 0.54043 0.16931
-TNG 0.16467 0.92670 0.37026 0.14661
-TIG 0.13770 0.04712 0.31487 0.13407
-UGR11 0.43342 37.20000 2.17593 0.39019
-UGR31 0.90549 108.00000 4.52778 0.79782
-UGR13 0.82819 40.80000 4.17593 0.76296
+TP 0.45692 0.47685 0.48566 0.45660
+FP 0.04025 0.22778 0.08214 0.03972
+TN 0.44036 0.17685 0.31813 0.44180
+FN 0.06248 0.11852 0.11406 0.06189
+OA 0.55229 0.89728
+P 0.56605 0.91964
+R 0.54019 0.87762
+F1 0.55003 0.89362
+IoU 0.50064 0.81338
+CG 0.75179 0.01639 0.39462 0.77244
+TCG 0.61551 0.00170 0.33588 0.71938
+NG 0.24821 0.98361 0.60538 0.22756
+TNG 0.20322 0.10198 0.51527 0.21193
+TIG 0.18127 0.89632 0.14885 0.06870
+UGR11 0.62466 587.33333 1.97727 0.39009
+UGR31 1.28499 707.33333 5.04545 0.97928
+UGR13 1.21365 1642.00000 2.86364 0.58108
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
 Done (t=0.18s)
@@ -217,29 +217,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_ms
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46539 0.48681 0.49836 0.46498
-FP 0.06066 0.14375 0.11112 0.06001
-TN 0.42829 0.30694 0.30236 0.42988
-FN 0.04566 0.06250 0.08816 0.04514
-OA 0.61945 0.89368
-P 0.61375 0.88545
-R 0.63029 0.90932
-F1 0.61862 0.89249
-IoU 0.56257 0.81163
-CG 0.79670 0.02198 0.44397 0.81820
-TCG 0.69315 0.02073 0.31988 0.71420
-NG 0.20330 0.97802 0.55603 0.18180
-TNG 0.17688 0.92228 0.40062 0.15869
-TIG 0.12997 0.05699 0.27950 0.12711
-UGR11 0.44270 47.25000 2.12621 0.40017
-UGR31 0.95306 136.25000 4.63107 0.84456
-UGR13 0.81773 52.75000 3.87379 0.75610
+TP 0.45653 0.47361 0.48268 0.45623
+FP 0.04105 0.15139 0.09052 0.04045
+TN 0.43955 0.29236 0.31627 0.44099
+FN 0.06287 0.08264 0.11053 0.06233
+OA 0.56589 0.89608
+P 0.57983 0.91815
+R 0.55364 0.87668
+F1 0.56355 0.89237
+IoU 0.51241 0.81139
+CG 0.75967 0.02198 0.39648 0.78057
+TCG 0.63152 0.00263 0.32143 0.72492
+NG 0.24033 0.97802 0.60352 0.21943
+TNG 0.19978 0.11711 0.48929 0.20378
+TIG 0.16870 0.88026 0.18929 0.07130
+UGR11 0.58349 379.00000 2.11111 0.37946
+UGR31 1.21620 468.00000 5.15556 0.94168
+UGR13 1.11775 1048.00000 3.28889 0.57618
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.28s)
+Done (t=0.30s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -247,29 +247,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_ms
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46529 0.46296 0.49392 0.46493
-FP 0.06104 0.11759 0.11681 0.06032
-TN 0.42788 0.34444 0.30011 0.42951
-FN 0.04580 0.07500 0.08915 0.04524
-OA 0.62025 0.89316
-P 0.61454 0.88494
-R 0.63136 0.90916
-F1 0.61952 0.89211
-IoU 0.56322 0.81104
-CG 0.79967 0.01639 0.46725 0.82084
-TCG 0.69444 0.01587 0.33542 0.71484
-NG 0.20033 0.98361 0.53275 0.17916
-TNG 0.17397 0.95238 0.38245 0.15602
-TIG 0.13159 0.03175 0.28213 0.12914
-UGR11 0.44001 62.00000 1.98131 0.39892
-UGR31 0.94105 182.00000 4.26168 0.83545
-UGR13 0.81898 66.00000 3.66355 0.76023
+TP 0.45593 0.51019 0.48780 0.45558
+FP 0.04032 0.12778 0.08684 0.03982
+TN 0.43996 0.26019 0.31366 0.44132
+FN 0.06379 0.10185 0.11170 0.06328
+OA 0.55759 0.89589
+P 0.57226 0.91946
+R 0.54460 0.87502
+F1 0.55521 0.89206
+IoU 0.50473 0.81096
+CG 0.75216 0.01657 0.37443 0.77296
+TCG 0.62239 0.00182 0.30370 0.72248
+NG 0.24784 0.98343 0.62557 0.22704
+TNG 0.20508 0.10775 0.50741 0.21221
+TIG 0.17253 0.89044 0.18889 0.06530
+UGR11 0.60671 549.66667 2.29268 0.38412
+UGR31 1.26573 668.33333 5.63415 0.97157
+UGR13 1.16112 1530.33333 3.53659 0.56489
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> 
 loading annotations into memory...
-Done (t=0.30s)
+Done (t=0.18s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -280,26 +280,26 @@ Loading and preparing results...
 DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46392 0.54282 0.49552 0.46347
-FP 0.05985 0.17338 0.12220 0.05899
-TN 0.42997 0.16639 0.29419 0.43186
-FN 0.04625 0.11741 0.08809 0.04568
-OA 0.62247 0.89390
-P 0.61742 0.88665
-R 0.63223 0.90792
-F1 0.62129 0.89221
-IoU 0.56503 0.81141
-CG 0.81182 0.02793 0.46610 0.83324
-TCG 0.69635 0.02604 0.31884 0.71788
-NG 0.18818 0.97207 0.53390 0.16676
-TNG 0.16141 0.90625 0.36522 0.14368
-TIG 0.14223 0.06771 0.31594 0.13844
-UGR11 0.43605 37.40000 2.13636 0.39298
-UGR31 0.89965 107.00000 4.42727 0.79326
-UGR13 0.84455 42.60000 4.11818 0.77867
+TP 0.45596 0.49391 0.49003 0.45560
+FP 0.03839 0.29231 0.08165 0.03789
+TN 0.44202 0.10064 0.31800 0.44338
+FN 0.06363 0.11314 0.11032 0.06314
+OA 0.53994 0.89798
+P 0.55488 0.92284
+R 0.52643 0.87552
+F1 0.53758 0.89406
+IoU 0.48950 0.81409
+CG 0.74232 0.01093 0.37156 0.76301
+TCG 0.60128 0.00101 0.31395 0.71582
+NG 0.25768 0.98907 0.62844 0.23699
+TNG 0.20872 0.09109 0.53101 0.22233
+TIG 0.19000 0.90790 0.15504 0.06184
+UGR11 0.66312 992.50000 2.18519 0.39699
+UGR31 1.35737 1173.50000 5.56790 1.01819
+UGR13 1.29513 2796.50000 3.17284 0.56979
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
-Done (t=0.19s)
+Done (t=0.18s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -307,29 +307,29 @@ load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_2021041
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46537 0.52135 0.49594 0.46500
-FP 0.06107 0.10469 0.12036 0.06037
-TN 0.42836 0.24271 0.30023 0.42992
-FN 0.04519 0.13125 0.08347 0.04471
-OA 0.61918 0.89374
-P 0.61307 0.88492
-R 0.63053 0.91012
-F1 0.61838 0.89258
-IoU 0.56242 0.81181
-CG 0.80189 0.02222 0.42982 0.82361
-TCG 0.69280 0.02062 0.29429 0.71482
-NG 0.19811 0.97778 0.57018 0.17639
-TNG 0.17116 0.90722 0.39039 0.15309
-TIG 0.13604 0.07216 0.31532 0.13208
-UGR11 0.44342 47.50000 2.39796 0.39895
-UGR31 0.93751 135.50000 5.05102 0.82728
-UGR13 0.83615 54.50000 4.54082 0.76850
+TP 0.45596 0.47222 0.48202 0.45567
+FP 0.03921 0.22222 0.09441 0.03856
+TN 0.44092 0.29167 0.31307 0.44237
+FN 0.06391 0.01389 0.11049 0.06340
+OA 0.54877 0.89688
+P 0.56379 0.92142
+R 0.53528 0.87483
+F1 0.54636 0.89293
+IoU 0.49704 0.81234
+CG 0.74733 0.01105 0.39286 0.76784
+TCG 0.61187 0.00111 0.33083 0.71793
+NG 0.25267 0.98895 0.60714 0.23216
+TNG 0.20687 0.09922 0.51128 0.21707
+TIG 0.18127 0.89967 0.15789 0.06500
+UGR11 0.63434 901.00000 2.02273 0.39289
+UGR31 1.31053 1080.00000 5.11364 0.99761
+UGR13 1.22684 2524.00000 2.97727 0.57396
 Model Order: detectors_htc_r101_20e_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.19s)
+Done (t=0.25s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -337,26 +337,26 @@ load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_2021041
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46501 0.52760 0.49074 0.46468
-FP 0.06142 0.10469 0.12259 0.06067
-TN 0.42840 0.24271 0.29990 0.43001
-FN 0.04518 0.12500 0.08677 0.04465
-OA 0.61886 0.89341
-P 0.61248 0.88420
-R 0.63047 0.91016
-F1 0.61803 0.89221
-IoU 0.56196 0.81126
-CG 0.79920 0.02235 0.44493 0.82036
-TCG 0.69270 0.02094 0.31562 0.71358
-NG 0.20080 0.97765 0.55507 0.17964
-TNG 0.17404 0.91623 0.39375 0.15625
-TIG 0.13326 0.06283 0.29063 0.13017
-UGR11 0.44363 46.75000 2.16832 0.40139
-UGR31 0.94613 134.25000 4.66337 0.83933
-UGR13 0.82840 52.75000 4.00990 0.76622
+TP 0.45563 nan 0.48210 0.45536
+FP 0.03875 nan 0.08859 0.03824
+TN 0.44097 nan 0.31886 0.44221
+FN 0.06465 nan 0.11045 0.06419
+OA 0.55154 0.89660
+P 0.56724 0.92212
+R 0.53733 0.87350
+F1 0.54908 0.89259
+IoU 0.49940 0.81183
+CG 0.74603 0.00000 0.37500 0.76676
+TCG 0.61515 0.00000 0.31395 0.71748
+NG 0.25397 1.00000 0.62500 0.23324
+TNG 0.20941 0.10529 0.52326 0.21825
+TIG 0.17544 0.89471 0.16279 0.06427
+UGR11 0.62562 inf 2.18519 0.39377
+UGR31 1.30647 inf 5.51852 1.00214
+UGR13 1.19602 inf 3.22222 0.57294
 Model Order: cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
 Done (t=0.19s)
@@ -370,26 +370,26 @@ Loading and preparing results...
 DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46359 0.51219 0.49094 0.46323
-FP 0.06096 0.15201 0.11621 0.06022
-TN 0.42824 0.25000 0.30085 0.42991
-FN 0.04722 0.08580 0.09200 0.04664
-OA 0.61649 0.89183
-P 0.61159 0.88475
-R 0.62634 0.90608
-F1 0.61547 0.89037
-IoU 0.55876 0.80832
-CG 0.80505 0.03333 0.44444 0.82659
-TCG 0.69126 0.03209 0.30952 0.71217
-NG 0.19495 0.96667 0.55556 0.17341
-TNG 0.16740 0.93048 0.38690 0.14940
-TIG 0.14134 0.03743 0.30357 0.13843
-UGR11 0.44663 30.16667 2.23077 0.40416
-UGR31 0.93096 88.16667 4.73077 0.82372
-UGR13 0.85558 32.50000 4.19231 0.79290
+TP 0.45468 0.45641 0.48270 0.45439
+FP 0.03993 0.22981 0.08142 0.03944
+TN 0.44051 0.22564 0.32013 0.44183
+FN 0.06488 0.08814 0.11576 0.06434
+OA 0.54489 0.89519
+P 0.55986 0.91979
+R 0.53135 0.87294
+F1 0.54239 0.89109
+IoU 0.49261 0.80930
+CG 0.74650 0.01093 0.37838 0.76735
+TCG 0.60869 0.00110 0.31343 0.71522
+NG 0.25350 0.98907 0.62162 0.23265
+TNG 0.20670 0.09940 0.51493 0.21684
+TIG 0.18461 0.89951 0.17164 0.06794
+UGR11 0.64288 909.50000 2.19048 0.39817
+UGR31 1.32206 1090.50000 5.47619 1.00452
+UGR13 1.24947 2547.50000 3.28571 0.58814
 Model Order: cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.30s)
+Done (t=0.18s)
 creating index...
 index created!
 Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
@@ -400,26 +400,26 @@ Loading and preparing results...
 DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46359 0.55957 0.49048 0.46324
-FP 0.06091 0.10772 0.11325 0.06027
-TN 0.42815 0.23704 0.30339 0.42971
-FN 0.04735 0.09568 0.09289 0.04678
-OA 0.61559 0.89174
-P 0.61073 0.88470
-R 0.62542 0.90598
-F1 0.61460 0.89030
-IoU 0.55793 0.80823
-CG 0.80607 0.01657 0.44783 0.82780
-TCG 0.69032 0.01604 0.30655 0.71147
-NG 0.19393 0.98343 0.55217 0.17220
-TNG 0.16608 0.95187 0.37798 0.14800
-TIG 0.14360 0.03209 0.31548 0.14054
-UGR11 0.44860 61.33333 2.26214 0.40555
-UGR31 0.92978 180.00000 4.72816 0.82158
-UGR13 0.86463 65.33333 4.32039 0.80061
+TP 0.45428 0.47927 0.48723 0.45397
+FP 0.03947 0.23675 0.08374 0.03899
+TN 0.44079 0.18355 0.31470 0.44205
+FN 0.06545 0.10043 0.11433 0.06499
+OA 0.53917 0.89508
+P 0.55458 0.92067
+R 0.52516 0.87182
+F1 0.53665 0.89090
+IoU 0.48736 0.80907
+CG 0.74093 0.01639 0.34597 0.76173
+TCG 0.60237 0.00157 0.28968 0.71259
+NG 0.25907 0.98361 0.65403 0.23827
+TNG 0.21062 0.09449 0.54762 0.22290
+TIG 0.18701 0.90394 0.16270 0.06451
+UGR11 0.66011 634.00000 2.45205 0.40334
+UGR31 1.35942 754.00000 6.23288 1.02895
+UGR13 1.28103 1782.00000 3.57534 0.58440
 Model Order: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.19s)
+Done (t=0.30s)
 creating index...
 index created!
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
@@ -427,29 +427,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dc
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46342 0.47986 0.49137 0.46310
-FP 0.06091 0.11597 0.11259 0.06030
-TN 0.42774 0.33472 0.30412 0.42917
-FN 0.04793 0.06944 0.09192 0.04743
-OA 0.61301 0.89117
-P 0.60865 0.88482
-R 0.62250 0.90497
-F1 0.61214 0.88990
-IoU 0.55549 0.80755
-CG 0.79159 0.02210 0.41778 0.81313
-TCG 0.68787 0.02105 0.30421 0.70848
-NG 0.20841 0.97790 0.58222 0.18687
-TNG 0.18110 0.93158 0.42395 0.16282
-TIG 0.13103 0.04737 0.27184 0.12871
-UGR11 0.45376 46.50000 2.28723 0.41148
-UGR31 0.98031 135.00000 5.07447 0.87110
-UGR13 0.83472 51.00000 4.07447 0.77481
+TP 0.45543 0.47500 0.48238 0.45516
+FP 0.04260 0.03750 0.09324 0.04210
+TN 0.43814 0.35000 0.31585 0.43938
+FN 0.06383 0.13750 0.10854 0.06337
+OA 0.55989 0.89357
+P 0.57351 0.91529
+R 0.54807 0.87470
+F1 0.55753 0.88980
+IoU 0.50587 0.80734
+CG 0.75281 0.01093 0.37209 0.77377
+TCG 0.62658 0.00132 0.30075 0.71898
+NG 0.24719 0.98907 0.62791 0.22623
+TNG 0.20575 0.11971 0.50752 0.21021
+TIG 0.16767 0.87897 0.19173 0.07081
+UGR11 0.59596 755.00000 2.32500 0.39086
+UGR31 1.25268 936.00000 5.70000 0.97559
+UGR13 1.13115 2084.00000 3.60000 0.58785
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> 
 loading annotations into memory...
-Done (t=0.25s)
+Done (t=0.29s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -462,126 +462,126 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46325 nan 0.49398 0.46290
-FP 0.04975 nan 0.10451 0.04913
-TN 0.43579 nan 0.30785 0.43722
-FN 0.05121 nan 0.09367 0.05074
-OA 0.64231 0.89904
-P 0.64555 0.90357
-R 0.64213 0.89878
-F1 0.64068 0.89675
-IoU 0.58471 0.81842
-CG 0.77888 0.00000 0.41518 0.80033
-TCG 0.71444 0.00000 0.35361 0.73441
-NG 0.22112 1.00000 0.58482 0.19967
-TNG 0.20283 0.98907 0.49810 0.18323
-TIG 0.08273 0.01093 0.14829 0.08237
-UGR11 0.39969 inf 1.82796 0.36164
-UGR31 0.96748 inf 4.64516 0.86062
-UGR13 0.63128 inf 2.66667 0.58595
+TP 0.45215 0.45486 0.48556 0.45174
+FP 0.03603 0.23333 0.08153 0.03537
+TN 0.44261 0.22292 0.31990 0.44423
+FN 0.06921 0.08889 0.11300 0.06866
+OA 0.63231 0.89476
+P 0.65499 0.92686
+R 0.61121 0.86490
+F1 0.62900 0.89008
+IoU 0.57094 0.80792
+CG 0.78556 0.02198 0.44017 0.80678
+TCG 0.70668 0.02105 0.33882 0.72776
+NG 0.21444 0.97802 0.55983 0.19322
+TNG 0.19290 0.93684 0.43092 0.17430
+TIG 0.10042 0.04211 0.23026 0.09795
+UGR11 0.41507 46.50000 1.95146 0.37409
+UGR31 0.96102 135.50000 4.49515 0.85309
+UGR13 0.69927 50.50000 3.31068 0.64326
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
+loading annotations into memory...
+Done (t=0.30s)
+creating index...
+index created!
+Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
+Loading inference results from model: detectors_htc_r101_20e_coco
+load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
+Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
+Loading and preparing results...
+DONE (t=0.07s)
+creating index...
+index created!
+TP 0.45226 0.49000 0.47762 0.45191
+FP 0.03623 0.15444 0.08412 0.03554
+TN 0.44175 0.28389 0.31923 0.44342
+FN 0.06976 0.07167 0.11903 0.06913
+OA 0.63008 0.89401
+P 0.65305 0.92661
+R 0.60881 0.86383
+F1 0.62680 0.88936
+IoU 0.56861 0.80679
+CG 0.78417 0.02762 0.45339 0.80492
+TCG 0.70478 0.02632 0.33861 0.72608
+NG 0.21583 0.97238 0.54661 0.19508
+TNG 0.19398 0.92632 0.40823 0.17597
+TIG 0.10124 0.04737 0.25316 0.09795
+UGR11 0.41889 37.00000 1.95327 0.37726
+UGR31 0.96935 107.40000 4.36449 0.86197
+UGR13 0.70619 40.60000 3.44860 0.64708
+Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
+loading annotations into memory...
+Done (t=0.30s)
+creating index...
+index created!
+Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
+Loading inference results from model: detectors_htc_r101_20e_coco
+load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
+Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
+Loading and preparing results...
+DONE (t=0.07s)
+creating index...
+index created!
+TP 0.45129 0.47986 0.47860 0.45092
+FP 0.03619 0.15833 0.08532 0.03548
+TN 0.44223 0.28542 0.31800 0.44395
+FN 0.07029 0.07639 0.11808 0.06965
+OA 0.63284 0.89352
+P 0.65616 0.92645
+R 0.61101 0.86270
+F1 0.62937 0.88863
+IoU 0.57063 0.80569
+CG 0.78389 0.02210 0.46809 0.80436
+TCG 0.70825 0.02094 0.35948 0.72907
+NG 0.21611 0.97790 0.53191 0.19564
+TNG 0.19525 0.92670 0.40850 0.17732
+TIG 0.09650 0.05236 0.23203 0.09361
+UGR11 0.41193 46.75000 1.78182 0.37161
+UGR31 0.96330 135.25000 4.05455 0.85805
+UGR13 0.68442 51.75000 3.07273 0.62839
+Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
 Done (t=0.24s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
-Loading inference results from model: detectors_htc_r101_20e_coco
-load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
+Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
 Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46429 0.46944 0.50299 0.46386
-FP 0.05004 0.15278 0.10573 0.04939
-TN 0.43475 0.30278 0.29910 0.43629
-FN 0.05092 0.07500 0.09218 0.05046
-OA 0.63611 0.89904
-P 0.63927 0.90350
-R 0.63647 0.89955
-F1 0.63478 0.89715
-IoU 0.57942 0.81892
-CG 0.77359 0.01099 0.40889 0.79489
-TCG 0.70754 0.01087 0.34717 0.72728
-NG 0.22641 0.98901 0.59111 0.20511
-TNG 0.20708 0.97826 0.50189 0.18767
-TIG 0.08538 0.01087 0.15094 0.08505
-UGR11 0.41334 91.00000 1.88043 0.37498
-UGR31 0.99868 271.00000 4.77174 0.89106
-UGR13 0.65467 93.00000 2.75000 0.60888
-Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
+TP 0.45129 0.46889 0.47849 0.45095
+FP 0.03701 0.16111 0.08082 0.03640
+TN 0.44165 0.26389 0.32158 0.44323
+FN 0.07005 0.10611 0.11911 0.06943
+OA 0.62991 0.89294
+P 0.65253 0.92500
+R 0.60881 0.86303
+F1 0.62648 0.88808
+IoU 0.56766 0.80470
+CG 0.78398 0.02747 0.43590 0.80513
+TCG 0.70544 0.02646 0.32484 0.72704
+NG 0.21602 0.97253 0.56410 0.19487
+TNG 0.19437 0.93651 0.42038 0.17596
+TIG 0.10019 0.03704 0.25478 0.09700
+UGR11 0.41756 36.80000 2.07843 0.37545
+UGR31 0.96864 107.60000 4.66667 0.85951
+UGR13 0.70162 39.60000 3.64706 0.64229
+Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
 Done (t=0.19s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
-Loading inference results from model: detectors_htc_r101_20e_coco
-load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
-Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
-load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
-Loading and preparing results...
-DONE (t=0.07s)
-creating index...
-index created!
-TP 0.46376 0.55000 0.49678 0.46337
-FP 0.05003 0.00000 0.10531 0.04940
-TN 0.43502 0.30000 0.30562 0.43653
-FN 0.05119 0.15000 0.09229 0.05071
-OA 0.63824 0.89878
-P 0.64151 0.90340
-R 0.63841 0.89903
-F1 0.63679 0.89675
-IoU 0.58114 0.81838
-CG 0.77396 0.00549 0.42222 0.79508
-TCG 0.71011 0.00543 0.35055 0.73023
-NG 0.22604 0.99451 0.57778 0.20492
-TNG 0.20739 0.98370 0.47970 0.18820
-TIG 0.08250 0.01087 0.16974 0.08157
-UGR11 0.40822 183.00000 1.85263 0.36944
-UGR31 0.99233 545.00000 4.58947 0.88490
-UGR13 0.64057 187.00000 2.82105 0.59284
-Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
-loading annotations into memory...
-Done (t=0.26s)
-creating index...
-index created!
-Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
-load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
-Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
-load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
-Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
-load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
-Loading and preparing results...
-DONE (t=0.07s)
-creating index...
-index created!
-TP 0.46273 0.46918 0.49883 0.46234
-FP 0.05067 0.22324 0.10341 0.05002
-TN 0.43470 0.23226 0.30384 0.43622
-FN 0.05190 0.07532 0.09393 0.05143
-OA 0.63730 0.89743
-P 0.64056 0.90201
-R 0.63732 0.89745
-F1 0.63571 0.89519
-IoU 0.57939 0.81588
-CG 0.77703 0.02198 0.40179 0.79838
-TCG 0.71014 0.02162 0.33708 0.73016
-NG 0.22297 0.97802 0.59821 0.20162
-TNG 0.20378 0.96216 0.50187 0.18439
-TIG 0.08608 0.01622 0.16105 0.08545
-UGR11 0.40817 45.25000 1.96667 0.36957
-UGR31 0.98209 134.25000 4.94444 0.87464
-UGR13 0.65059 46.75000 2.92222 0.60362
-Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
-loading annotations into memory...
-Done (t=0.26s)
-creating index...
-index created!
-Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
-load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
 Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
@@ -590,26 +590,26 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46251 0.50427 0.49811 0.46211
-FP 0.05079 0.19509 0.10276 0.05017
-TN 0.43467 0.20855 0.30339 0.43618
-FN 0.05204 0.09209 0.09574 0.05155
-OA 0.63776 0.89717
-P 0.64109 0.90185
-R 0.63785 0.89729
-F1 0.63619 0.89496
-IoU 0.57973 0.81553
-CG 0.77563 0.01648 0.40541 0.79688
-TCG 0.71086 0.01630 0.34091 0.73079
-NG 0.22437 0.98352 0.59459 0.20312
-TNG 0.20563 0.97283 0.50000 0.18628
-TIG 0.08351 0.01087 0.15909 0.08293
-UGR11 0.40675 60.33333 1.93333 0.36838
-UGR31 0.98529 179.66667 4.86667 0.87818
-UGR13 0.64170 61.66667 2.86667 0.59533
+TP 0.45076 0.50139 0.48125 0.45037
+FP 0.03667 0.15208 0.08147 0.03608
+TN 0.44188 0.22639 0.31958 0.44343
+FN 0.07069 0.12014 0.11771 0.07011
+OA 0.62907 0.89264
+P 0.65226 0.92555
+R 0.60743 0.86193
+F1 0.62561 0.88772
+IoU 0.56674 0.80419
+CG 0.78222 0.02198 0.43043 0.80338
+TCG 0.70473 0.02128 0.32353 0.72611
+NG 0.21778 0.97802 0.56957 0.19662
+TNG 0.19620 0.94681 0.42810 0.17771
+TIG 0.09906 0.03191 0.24837 0.09618
+UGR11 0.41898 46.00000 2.09091 0.37721
+UGR31 0.97580 135.00000 4.73737 0.86670
+UGR13 0.70012 49.00000 3.62626 0.64213
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.28s)
+Done (t=0.19s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -622,23 +622,23 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46269 0.45463 0.49043 0.46240
-FP 0.05143 0.13611 0.11096 0.05077
-TN 0.43363 0.32593 0.30660 0.43501
-FN 0.05225 0.08333 0.09201 0.05181
-OA 0.63228 0.89632
-P 0.63547 0.90085
-R 0.63261 0.89679
-F1 0.63081 0.89424
-IoU 0.57449 0.81441
-CG 0.77257 0.01648 0.39367 0.79391
-TCG 0.70541 0.01639 0.31985 0.72577
-NG 0.22743 0.98352 0.60633 0.20609
-TNG 0.20766 0.97814 0.49265 0.18840
-TIG 0.08693 0.00546 0.18750 0.08583
-UGR11 0.41761 60.00000 2.12644 0.37785
-UGR31 1.00637 179.33333 5.20690 0.89704
-UGR13 0.66406 60.66667 3.29885 0.61438
+TP 0.45153 0.47361 0.47614 0.45122
+FP 0.03756 0.15139 0.08834 0.03690
+TN 0.44101 0.29236 0.32064 0.44254
+FN 0.06989 0.08264 0.11487 0.06935
+OA 0.62450 0.89254
+P 0.64650 0.92398
+R 0.60404 0.86329
+F1 0.62119 0.88780
+IoU 0.56274 0.80427
+CG 0.78046 0.02210 0.43478 0.80137
+TCG 0.69969 0.02128 0.32154 0.72097
+NG 0.21954 0.97790 0.56522 0.19863
+TNG 0.19682 0.94149 0.41801 0.17870
+TIG 0.10349 0.03723 0.26045 0.10033
+UGR11 0.42920 46.00000 2.11000 0.38702
+UGR31 0.99180 134.50000 4.71000 0.88275
+UGR13 0.72500 49.50000 3.73000 0.66534
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
 Done (t=0.25s)
@@ -654,26 +654,26 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46308 0.42500 0.49763 0.46270
-FP 0.05005 0.17500 0.10760 0.04940
-TN 0.43533 0.30000 0.30410 0.43679
-FN 0.05154 0.10000 0.09068 0.05111
-OA 0.63899 0.89841
-P 0.64226 0.90301
-R 0.63874 0.89807
-F1 0.63735 0.89611
-IoU 0.58129 0.81729
-CG 0.77480 0.00556 0.40088 0.79634
-TCG 0.71124 0.00543 0.33704 0.73170
-NG 0.22520 0.99444 0.59912 0.20366
-TNG 0.20673 0.97283 0.50370 0.18713
-TIG 0.08203 0.02174 0.15926 0.08116
-UGR11 0.40599 183.00000 1.96703 0.36667
-UGR31 0.98731 541.00000 4.95604 0.87818
-UGR13 0.63665 191.00000 2.91209 0.58852
+TP 0.45035 0.46645 0.48716 0.44990
+FP 0.03569 0.21568 0.08258 0.03502
+TN 0.44239 0.24205 0.31780 0.44401
+FN 0.07156 0.07581 0.11246 0.07107
+OA 0.62973 0.89275
+P 0.65428 0.92755
+R 0.60693 0.86042
+F1 0.62625 0.88781
+IoU 0.56737 0.80434
+CG 0.78269 0.02747 0.43290 0.80374
+TCG 0.70539 0.02604 0.32680 0.72688
+NG 0.21731 0.97253 0.56710 0.19626
+TNG 0.19585 0.92188 0.42810 0.17749
+TIG 0.09876 0.05208 0.24510 0.09564
+UGR11 0.41766 37.40000 2.06000 0.37575
+UGR31 0.97297 108.20000 4.68000 0.86411
+UGR13 0.69769 41.40000 3.56000 0.63890
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.30s)
+Done (t=0.26s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -686,26 +686,26 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46262 0.45000 0.50078 0.46220
-FP 0.05033 0.17500 0.10692 0.04969
-TN 0.43544 0.30000 0.29931 0.43694
-FN 0.05162 0.07500 0.09299 0.05116
-OA 0.63640 0.89806
-P 0.63968 0.90268
-R 0.63625 0.89785
-F1 0.63474 0.89572
-IoU 0.57877 0.81674
-CG 0.77183 0.00549 0.40909 0.79296
-TCG 0.70864 0.00549 0.33962 0.72863
-NG 0.22817 0.99451 0.59091 0.20704
-TNG 0.20949 0.99451 0.49057 0.19024
-TIG 0.08187 0.00000 0.16981 0.08113
-UGR11 0.41116 181.00000 1.94444 0.37243
-UGR31 1.00240 543.00000 4.83333 0.89462
-UGR13 0.64222 181.00000 2.94444 0.59511
+TP 0.44992 0.47927 0.48729 0.44947
+FP 0.03551 0.22821 0.08223 0.03489
+TN 0.44247 0.19209 0.31509 0.44408
+FN 0.07209 0.10043 0.11540 0.07156
+OA 0.62979 0.89240
+P 0.65471 0.92770
+R 0.60659 0.85952
+F1 0.62626 0.88739
+IoU 0.56721 0.80373
+CG 0.78064 0.01648 0.43421 0.80168
+TCG 0.70573 0.01596 0.33110 0.72687
+NG 0.21936 0.98352 0.56579 0.19832
+TNG 0.19831 0.95213 0.43144 0.17981
+TIG 0.09597 0.03191 0.23746 0.09332
+UGR11 0.41697 61.66667 2.02020 0.37577
+UGR31 0.97896 181.00000 4.62626 0.87053
+UGR13 0.68893 65.66667 3.45455 0.63254
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.31s)
+Done (t=0.19s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -718,23 +718,23 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46218 0.48750 0.48927 0.46187
-FP 0.05102 0.03750 0.11696 0.05029
-TN 0.43461 0.35000 0.30534 0.43608
-FN 0.05218 0.12500 0.08844 0.05176
-OA 0.63324 0.89679
-P 0.63645 0.90133
-R 0.63320 0.89672
-F1 0.63160 0.89447
-IoU 0.57532 0.81476
-CG 0.77053 0.01111 0.40529 0.79171
-TCG 0.70612 0.01099 0.34457 0.72584
-NG 0.22947 0.98889 0.59471 0.20829
-TNG 0.21029 0.97802 0.50562 0.19096
-TIG 0.08359 0.01099 0.14981 0.08319
-UGR11 0.41618 90.00000 1.90217 0.37771
-UGR31 1.01180 268.00000 4.83696 0.90390
-UGR13 0.65294 92.00000 2.77174 0.60694
+TP 0.45082 0.47361 0.47631 0.45049
+FP 0.03666 0.12986 0.09075 0.03594
+TN 0.44150 0.32083 0.31461 0.44315
+FN 0.07102 0.07569 0.11832 0.07043
+OA 0.62690 0.89232
+P 0.65038 0.92574
+R 0.60509 0.86127
+F1 0.62351 0.88749
+IoU 0.56475 0.80385
+CG 0.78046 0.02222 0.45022 0.80098
+TCG 0.70256 0.02151 0.34437 0.72301
+NG 0.21954 0.97778 0.54978 0.19902
+TNG 0.19763 0.94624 0.42053 0.17964
+TIG 0.09982 0.03226 0.23510 0.09735
+UGR11 0.42337 45.50000 1.90385 0.38311
+UGR31 0.98597 133.50000 4.34615 0.88004
+UGR13 0.70753 48.50000 3.26923 0.65241
 Model Order: cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
 Done (t=0.19s)
@@ -750,26 +750,26 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46219 0.47500 0.49050 0.46189
-FP 0.05134 0.03750 0.11097 0.05072
-TN 0.43353 0.35000 0.30329 0.43491
-FN 0.05295 0.13750 0.09524 0.05248
-OA 0.62931 0.89572
-P 0.63301 0.90097
-R 0.62910 0.89542
-F1 0.62784 0.89362
-IoU 0.57143 0.81333
-CG 0.77025 0.01099 0.38739 0.79177
-TCG 0.70258 0.01081 0.31159 0.72336
-NG 0.22975 0.98901 0.61261 0.20823
-TNG 0.20956 0.97297 0.49275 0.19024
-TIG 0.08785 0.01622 0.19565 0.08640
-UGR11 0.42332 91.50000 2.20930 0.38244
-UGR31 1.01988 271.50000 5.37209 0.90844
-UGR13 0.67341 94.50000 3.46512 0.62133
+TP 0.45017 0.49071 0.47980 0.44980
+FP 0.03723 0.17115 0.08160 0.03664
+TN 0.44112 0.21907 0.32060 0.44266
+FN 0.07148 0.11907 0.11801 0.07090
+OA 0.62324 0.89129
+P 0.64642 0.92444
+R 0.60163 0.86038
+F1 0.61975 0.88630
+IoU 0.56075 0.80192
+CG 0.77842 0.02198 0.42857 0.79950
+TCG 0.69926 0.02128 0.32353 0.72033
+NG 0.22158 0.97802 0.57143 0.20050
+TNG 0.19905 0.94681 0.43137 0.18065
+TIG 0.10169 0.03191 0.24510 0.09902
+UGR11 0.43009 46.00000 2.09091 0.38825
+UGR31 0.99940 135.00000 4.75758 0.88981
+UGR13 0.72094 49.00000 3.60606 0.66317
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> 
 loading annotations into memory...
-Done (t=0.30s)
+Done (t=0.25s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -781,29 +781,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_ms
 Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46463 0.45463 0.50341 0.46418
-FP 0.05461 0.16019 0.11090 0.05392
-TN 0.43269 0.30185 0.29889 0.43430
-FN 0.04807 0.08333 0.08680 0.04760
-OA 0.64062 0.89732
-P 0.63938 0.89557
-R 0.64590 0.90472
-F1 0.63937 0.89556
-IoU 0.58292 0.81650
-CG 0.79336 0.01657 0.43043 0.81497
-TCG 0.71393 0.01622 0.35357 0.73391
-NG 0.20664 0.98343 0.56957 0.18503
-TNG 0.18596 0.96216 0.46786 0.16662
-TIG 0.10012 0.02162 0.17857 0.09947
-UGR11 0.40070 60.66667 1.82828 0.36257
-UGR31 0.92164 179.33333 4.47475 0.81664
-UGR13 0.68117 63.33333 2.83838 0.63364
+TP 0.45823 0.47621 0.48707 0.45785
+FP 0.04338 0.16631 0.09095 0.04268
+TN 0.43808 0.26514 0.31462 0.43978
+FN 0.06031 0.09234 0.10736 0.05969
+OA 0.63551 0.89631
+P 0.64826 0.91429
+R 0.62514 0.88168
+F1 0.63315 0.89297
+IoU 0.57611 0.81253
+CG 0.80338 0.03297 0.45798 0.82485
+TCG 0.70903 0.03093 0.32537 0.73130
+NG 0.19662 0.96703 0.54202 0.17515
+TNG 0.17353 0.90722 0.38507 0.15528
+TIG 0.11744 0.06186 0.28955 0.11342
+UGR11 0.41037 31.33333 2.07339 0.36744
+UGR31 0.89986 90.00000 4.44037 0.79211
+UGR13 0.74163 35.33333 3.85321 0.67763
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.26s)
+Done (t=0.19s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -815,26 +815,26 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_ms
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46440 0.50000 0.49974 0.46399
-FP 0.05460 0.08750 0.10894 0.05397
-TN 0.43281 0.30000 0.30040 0.43436
-FN 0.04819 0.11250 0.09092 0.04768
-OA 0.64224 0.89721
-P 0.64098 0.89545
-R 0.64744 0.90448
-F1 0.64091 0.89536
-IoU 0.58428 0.81624
-CG 0.79419 0.01105 0.42731 0.81589
-TCG 0.71582 0.01087 0.34767 0.73604
-NG 0.20581 0.98895 0.57269 0.18411
-TNG 0.18550 0.97283 0.46595 0.16609
-TIG 0.09869 0.01630 0.18638 0.09788
-UGR11 0.39701 91.00000 1.87629 0.35863
-UGR31 0.91529 270.00000 4.55670 0.80993
-UGR13 0.67274 94.00000 2.94845 0.62459
+TP 0.45773 0.45668 0.48611 0.45735
+FP 0.04335 0.17115 0.09336 0.04262
+TN 0.43817 0.28435 0.31257 0.43990
+FN 0.06076 0.08782 0.10796 0.06012
+OA 0.63800 0.89590
+P 0.65110 0.91428
+R 0.62732 0.88090
+F1 0.63558 0.89250
+IoU 0.57811 0.81180
+CG 0.80458 0.02210 0.47280 0.82591
+TCG 0.71214 0.02094 0.34242 0.73393
+NG 0.19542 0.97790 0.52720 0.17409
+TNG 0.17296 0.92670 0.38182 0.15470
+TIG 0.11490 0.05236 0.27576 0.11137
+UGR11 0.40422 46.75000 1.92035 0.36252
+UGR31 0.88998 135.25000 4.15044 0.78408
+UGR13 0.72691 51.75000 3.53097 0.66600
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
 Done (t=0.25s)
@@ -849,29 +849,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dc
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46508 0.45463 0.49700 0.46471
-FP 0.05530 0.12685 0.10971 0.05463
-TN 0.43158 0.33519 0.30329 0.43312
-FN 0.04804 0.08333 0.09000 0.04753
-OA 0.63697 0.89666
-P 0.63544 0.89451
-R 0.64278 0.90484
-F1 0.63583 0.89506
-IoU 0.57947 0.81573
-CG 0.79020 0.01657 0.43612 0.81146
-TCG 0.71038 0.01639 0.34982 0.73026
-NG 0.20980 0.98343 0.56388 0.18854
-TNG 0.18861 0.97268 0.45230 0.16968
-TIG 0.10102 0.01093 0.19788 0.10007
-UGR11 0.40770 60.00000 1.85859 0.36938
-UGR31 0.93870 178.66667 4.44444 0.83409
-UGR13 0.69211 61.33333 2.98990 0.64345
+TP 0.45831 0.47361 0.48344 0.45798
+FP 0.04398 0.10972 0.09677 0.04328
+TN 0.43724 0.34097 0.30956 0.43890
+FN 0.06048 0.07569 0.11023 0.05984
+OA 0.63330 0.89554
+P 0.64594 0.91342
+R 0.62324 0.88132
+F1 0.63105 0.89236
+IoU 0.57389 0.81154
+CG 0.80087 0.02222 0.46352 0.82198
+TCG 0.70717 0.02105 0.33028 0.72887
+NG 0.19913 0.97778 0.53648 0.17802
+TNG 0.17583 0.92632 0.38226 0.15785
+TIG 0.11700 0.05263 0.28746 0.11328
+UGR11 0.41409 46.50000 2.02778 0.37199
+UGR31 0.91137 134.50000 4.34259 0.80514
+UGR13 0.74499 51.50000 3.76852 0.68283
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.26s)
+Done (t=0.31s)
 creating index...
 index created!
 Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
@@ -883,29 +883,29 @@ load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dc
 Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
 load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
 Loading and preparing results...
-DONE (t=0.07s)
+DONE (t=0.08s)
 creating index...
 index created!
-TP 0.46393 0.44630 0.49365 0.46360
-FP 0.05570 0.13611 0.11117 0.05505
-TN 0.43163 0.32593 0.30511 0.43308
-FN 0.04874 0.09167 0.09007 0.04827
-OA 0.63657 0.89556
-P 0.63518 0.89361
-R 0.64211 0.90334
-F1 0.63532 0.89380
-IoU 0.57842 0.81375
-CG 0.79141 0.01657 0.41964 0.81296
-TCG 0.71081 0.01622 0.32867 0.73144
-NG 0.20859 0.98343 0.58036 0.18704
-TNG 0.18735 0.96216 0.45455 0.16829
-TIG 0.10184 0.02162 0.21678 0.10028
-UGR11 0.40685 60.66667 2.04255 0.36717
-UGR31 0.93399 179.33333 4.80851 0.82732
-UGR13 0.69340 63.33333 3.36170 0.64137
+TP 0.45752 0.47534 0.48324 0.45718
+FP 0.04400 0.18137 0.09117 0.04332
+TN 0.43734 0.25303 0.31415 0.43902
+FN 0.06114 0.09026 0.11144 0.06049
+OA 0.63119 0.89486
+P 0.64398 0.91299
+R 0.62081 0.88015
+F1 0.62882 0.89151
+IoU 0.57144 0.81015
+CG 0.79920 0.02747 0.45957 0.82046
+TCG 0.70535 0.02618 0.33437 0.72668
+NG 0.20080 0.97253 0.54043 0.17954
+TNG 0.17722 0.92670 0.39319 0.15902
+TIG 0.11744 0.04712 0.27245 0.11430
+UGR11 0.41774 37.20000 1.99074 0.37612
+UGR31 0.92024 108.00000 4.34259 0.81376
+UGR13 0.75073 40.80000 3.62037 0.69071
 Model Order: detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
-Done (t=0.26s)
+Done (t=0.29s)
 creating index...
 index created!
 Loading inference results from model: detectors_htc_r101_20e_coco
@@ -920,23 +920,23 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46439 0.47500 0.49302 0.46405
-FP 0.05551 0.03750 0.11418 0.05483
-TN 0.43164 0.35000 0.30220 0.43318
-FN 0.04846 0.13750 0.09059 0.04794
-OA 0.63652 0.89603
-P 0.63511 0.89405
-R 0.64211 0.90390
-F1 0.63530 0.89432
-IoU 0.57865 0.81457
-CG 0.79178 0.01117 0.43231 0.81319
-TCG 0.71037 0.01093 0.34375 0.73061
-NG 0.20822 0.98883 0.56769 0.18681
-TNG 0.18681 0.96721 0.45139 0.16784
-TIG 0.10281 0.02186 0.20486 0.10155
-UGR11 0.40771 90.50000 1.90909 0.36871
-UGR31 0.93367 267.50000 4.53535 0.82815
-UGR13 0.69718 94.50000 3.10101 0.64670
+TP 0.45685 0.47889 0.48390 0.45650
+FP 0.04362 0.14889 0.09271 0.04295
+TN 0.43768 0.28167 0.31318 0.43931
+FN 0.06186 0.09056 0.11020 0.06124
+OA 0.63304 0.89452
+P 0.64656 0.91364
+R 0.62183 0.87869
+F1 0.63053 0.89098
+IoU 0.57281 0.80941
+CG 0.80264 0.02747 0.46087 0.82383
+TCG 0.70768 0.02618 0.33229 0.72902
+NG 0.19736 0.97253 0.53913 0.17617
+TNG 0.17402 0.92670 0.38871 0.15590
+TIG 0.11830 0.04712 0.27900 0.11509
+UGR11 0.41306 37.20000 2.00943 0.37171
+UGR31 0.90486 108.00000 4.34906 0.79939
+UGR13 0.74740 40.80000 3.68868 0.68743
 Model Order: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN -> detectors_htc_r101_20e_coco -> cascade_mask_rcnn_X-101-64x4d-FPN -> cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco -> gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4) -> 
 loading annotations into memory...
 Done (t=0.25s)
@@ -956,20 +956,20 @@ Loading and preparing results...
 DONE (t=0.07s)
 creating index...
 index created!
-TP 0.46358 0.44630 0.50213 0.46316
-FP 0.04923 0.12685 0.10260 0.04860
-TN 0.43527 0.33519 0.30133 0.43681
-FN 0.05192 0.09167 0.09394 0.05143
-OA 0.64115 0.89885
-P 0.64525 0.90460
-R 0.64015 0.89745
-F1 0.63954 0.89660
-IoU 0.58352 0.81806
-CG 0.77545 0.01648 0.41333 0.79662
-TCG 0.71330 0.01613 0.34962 0.73340
-NG 0.22455 0.98352 0.58667 0.20338
-TNG 0.20656 0.96237 0.49624 0.18723
-TIG 0.08015 0.02151 0.15414 0.07937
-UGR11 0.40194 61.00000 1.86022 0.36352
-UGR31 0.98109 180.33333 4.69892 0.87411
-UGR13 0.62666 63.66667 2.74194 0.57995
+TP 0.45702 0.46293 0.48613 0.45667
+FP 0.04073 0.16405 0.09289 0.04004
+TN 0.43924 0.29145 0.31220 0.44086
+FN 0.06300 0.08157 0.10878 0.06243
+OA 0.63907 0.89627
+P 0.65524 0.91894
+R 0.62505 0.87661
+F1 0.63650 0.89266
+IoU 0.57893 0.81193
+CG 0.78621 0.02210 0.44348 0.80716
+TCG 0.71304 0.02151 0.34114 0.73408
+NG 0.21379 0.97790 0.55652 0.19284
+TNG 0.19389 0.95161 0.42809 0.17538
+TIG 0.09307 0.02688 0.23077 0.09054
+UGR11 0.40245 45.50000 1.93137 0.36226
+UGR31 0.94630 134.00000 4.44118 0.84009
+UGR13 0.66352 48.00000 3.28431 0.60894

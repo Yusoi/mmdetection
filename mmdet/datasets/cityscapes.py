@@ -333,3 +333,31 @@ class CityscapesDataset(CocoDataset):
         if tmp_dir is not None:
             tmp_dir.cleanup()
         return eval_results
+
+    def custom_evaluate(self,
+                        results,
+                        threshold):
+        eval_results = dict()
+
+        metrics = ['segm']
+
+        if 'cityscapes' in metrics:
+            eval_results.update(
+                self._evaluate_cityscapes(results, outfile_prefix, logger))
+            metrics.remove('cityscapes')
+
+        # left metrics are all coco metric
+        if len(metrics) > 0:
+            # create CocoDataset with CityscapesDataset annotation
+            self_coco = CocoDataset(self.ann_file, self.pipeline.transforms,
+                                    None, self.data_root, self.img_prefix,
+                                    self.seg_prefix, self.proposal_file,
+                                    self.test_mode, self.filter_empty_gt)
+            # TODO: remove this in the future
+            # reload annotations of correct class
+            self_coco.CLASSES = self.CLASSES
+            self_coco.data_infos = self_coco.load_annotations(self.ann_file)
+            eval_results.update(
+                self_coco.custom_evaluate(results, threshold, is_cityscapes=True))
+
+        return eval_results
