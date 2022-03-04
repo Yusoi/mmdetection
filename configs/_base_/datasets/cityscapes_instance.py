@@ -50,7 +50,7 @@ data = dict(
     test=dict(
         type=dataset_type,
         ann_file=data_root +
-        'annotations/instancesonly_filtered_gtFine_test.json',
-        img_prefix=data_root + 'leftImg8bit/test/',
+        'annotations/instancesonly_filtered_gtFine_val.json',
+        img_prefix=data_root + 'leftImg8bit/val/',
         pipeline=test_pipeline))
 evaluation = dict(metric=['bbox', 'segm'])

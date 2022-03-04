@@ -642,7 +642,7 @@ class CocoDataset(CustomDataset):
         for i in range(0,len(used)):
             if not used[i]:
                 dt_segm_decoded = mask_util.decode(dt_segm[i]['segmentation'])
-                dt_bbox = dt_segm[dt]['bbox'].copy()
+                dt_bbox = dt_segm[i]['bbox'].copy()
                 dt_bbox[2] = dt_bbox[0]+dt_bbox[2]
                 dt_bbox[3] = dt_bbox[1]+dt_bbox[3]
                 xA,xB,yA,yB = int(round(dt_bbox[0])),int(round(dt_bbox[2])),int(round(dt_bbox[1])),int(round(dt_bbox[3]))
@@ -740,7 +740,7 @@ class CocoDataset(CustomDataset):
                 ann['segmentation'] = rle
         gts=cocoGt.loadAnns(cocoGt.getAnnIds(imgIds=imgIds, catIds=catIds))
         dts=cocoDt.loadAnns(cocoDt.getAnnIds(imgIds=imgIds, catIds=catIds))
-
+        
         # convert ground truth to mask if iouType == 'segm'
         if iou_type == 'segm':
             _toMask(gts, cocoGt)

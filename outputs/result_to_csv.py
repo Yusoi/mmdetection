@@ -74,6 +74,8 @@ def main():
     parser = argparse.ArgumentParser(description="Parse result files to obtain the highest value of the mask AP")
     parser.add_argument('folder', help="File to resolve")
     args = parser.parse_args()
+    
+    print()
 
     for file in glob.glob(args.folder+"/*.txt"):
         result_file = open(file,"r").read()
@@ -96,7 +98,7 @@ def main():
         ugr31 = re.findall(r"^UGR31 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
         ugr13 = re.findall(r"^UGR13 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
 
-        with open("ct/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
+        with open("aa_vc/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
             for model in key_list:
                 f.write(model+";")
             f.write("tp%;tp_s%;tp_m%;tp_l%;fp%;fp_s%;fp_m%;fp_l%;tn%;tn_s%;tn_m%;tn_l%;fn%;fn_s%;fn_m%;fn_l%;")

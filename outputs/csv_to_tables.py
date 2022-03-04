@@ -2,13 +2,20 @@ import numpy as np
 import glob
 import os
 
+models = {}
+models['hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN'] = '(a)'
+models['detectors_htc_r101_20e_coco'] = '(b)'
+models['cascade_mask_rcnn_X-101-64x4d-FPN'] = '(c)'
+models['cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco'] = '(d)'
+models['gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)'] = '(e)'
+
 def comp(a):
     return float(os.path.splitext(a)[0].split("/")[-1].split("=")[-1])
 
 
 def main():
-    folder = "ct/csv"
-    output_folder = "ct/tables"
+    folder = "aa_vc/csv"
+    output_folder = "aa_vc/tables"
 
     result_dict = {}
 
@@ -54,9 +61,13 @@ def main():
             cur_order = list(zip(*cur_order))[0]
                    
             print(param,cur_order)
+            name_switch = []
+            for cur in cur_order:
+                name_switch.append(models[cur])
             
             #order[n].tolist()
-            result_file.write("->".join(cur_order)+";")
+            #result_file.write("->".join(cur_order)+";")
+            result_file.write(">".join(name_switch)+";")
             result_file.write(";".join(r.tolist())+"\n")
         
 
