@@ -98,7 +98,7 @@ def main():
         ugr31 = re.findall(r"^UGR31 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
         ugr13 = re.findall(r"^UGR13 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
 
-        with open("aa_vc/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
+        with open("cityscapes/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
             for model in key_list:
                 f.write(model+";")
             f.write("tp%;tp_s%;tp_m%;tp_l%;fp%;fp_s%;fp_m%;fp_l%;tn%;tn_s%;tn_m%;tn_l%;fn%;fn_s%;fn_m%;fn_l%;")

@@ -14,8 +14,8 @@ def comp(a):
 
 
 def main():
-    folder = "aa_vc/csv"
-    output_folder = "aa_vc/tables"
+    folder = "cityscapes/csv"
+    output_folder = "cityscapes/tables"
 
     result_dict = {}
 
