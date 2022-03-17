@@ -434,8 +434,9 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
                                 count += 1
                                 
                         # Assuming an instance group is viable if most of the networks identified it
-                        if (count >= (n_models/2) + VIABLE_COUNTABILITY and not ensemble_method == "bitwise_and") or \
-                           (count == n_models and ensemble_method == "bitwise_and"):
+                        if (count >= (n_models/2) + VIABLE_COUNTABILITY and (not (ensemble_method == "bitwise_and")) and (not (ensemble_method == "bitwise_or"))) or \
+                           (count == n_models and ensemble_method == "bitwise_and") or \
+                           (ensemble_method == "bitwise_or"):
                             bbox = np.array([0.0]*5)
                             for model_result in range(0,len(cur_instance_group)):
                                 if not cur_instance_group[model_result] is None:

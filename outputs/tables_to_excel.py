@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def main():
-    folder = "cityscapes"
+    folder = "aa_vc"
 
     result_dict = {}
 
