@@ -4,62 +4,57 @@ import torch.nn.functional as F
 from torch.nn import init
 import torch
 
+layers = [(3,5,16),
+          (3,16,32),
+          (3,32,64),
+          (3,64,128),
+          (3,128,256),
+          (3,256,128),
+          (3,128,64),
+          (3,64,32),
+          (3,32,16),
+          (3,16,2)]
+
 class SimpleNet(nn.Module):
     def __init__(self, n_channels, layers, activation="", threshold=False):
         super(SimpleNet, self).__init__()
         self.n_channels = n_channels
         self.activation = activation
         cur_layers = []
-        for n,kernel_size in enumerate(layers):
-            if n == len(layers)-1:
-                last = True
-            else:
-                last = False
-            cur_layers.append(Conv2D(kernel_size,last))
-            
+        for n,(kernel_size,in_channels,out_channels) in enumerate(layers):
+
+            cur_layers.append(Conv2D(kernel_size,in_channels,out_channels))     
             #Reasoning for the use of sigmoid
             #https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/
             
+            if n != len(layers)-1:    
+                #Reasoning of the positioning of Batch Normalization:
+                #https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/    
+                cur_layers.append(BatchNorm(out_channels))
+
+                if self.activation == "relu":
+                    cur_layers.append(nn.ReLU())
+                elif self.activation == "sigmoid":
+                    cur_layers.append(nn.Sigmoid())
+                elif self.activation == "softmax":
+                    cur_layers.append(nn.Softmax2d())
+                elif self.activation == "tanh":
+                    cur_layers.append(nn.Tanh())
+                elif self.activation == "lrelu":
+                    cur_layers.append(nn.LeakyReLU())
                 
-            #Reasoning of the positioning of Batch Normalization:
-            #https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/    
-            cur_layers.append(BatchNorm(last))
-            
-            if self.activation == "relu":
-                cur_layers.append(nn.ReLU())
-            elif self.activation == "sigmoid":
-                cur_layers.append(nn.Sigmoid())
-            elif self.activation == "softmax":
-                cur_layers.append(nn.Softmax2d())
-            elif self.activation == "tanh":
-                cur_layers.append(nn.Tanh())
+        cur_layers.append(nn.Softmax2d)
             
         self.sequential = nn.Sequential(*cur_layers)
-
-        self.class_branch = nn.Sequential(nn.Conv2d(1, 1, kernel_size=3, stride=2),
-                                          nn.Conv2d(1, 1, kernel_size=3, stride=2),
-                                          nn.Conv2d(1, 1, kernel_size=3, stride=2),
-                                          nn.Flatten(),
-                                          nn.LazyLinear(1024),
-                                          nn.LeakyReLU(),
-                                          nn.LazyLinear(1),
-                                          nn.Sigmoid())
         
-        self.threshold = threshold
-
     def forward(self, x):
         x = self.sequential(x)
-        classification = self.class_branch(x)
-        return (x,classification)
+        return (x)
 
 class Conv2D(nn.Module):
-    def __init__(self, kernel_size, last):
+    def __init__(self, kernel_size, in_channels, out_channels):
         super().__init__()
-        if last:
-            out_channels = 1
-        else:
-            out_channels = 5
-        self.conv2d = nn.Conv2d(5, out_channels, kernel_size=kernel_size, padding=int(math.floor(kernel_size/2)))
+        self.conv2d = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, padding=int(math.floor(kernel_size/2)))
         #print(self.conv2d)
         
     def forward(self,x):
