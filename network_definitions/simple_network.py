@@ -8,17 +8,14 @@ layers = [(3,5,16),
           (3,16,32),
           (3,32,64),
           (3,64,128),
-          (3,128,256),
-          (3,256,128),
           (3,128,64),
           (3,64,32),
           (3,32,16),
           (3,16,2)]
 
 class SimpleNet(nn.Module):
-    def __init__(self, n_channels, layers, activation="", threshold=False):
+    def __init__(self, layers, activation="", threshold=False):
         super(SimpleNet, self).__init__()
-        self.n_channels = n_channels
         self.activation = activation
         cur_layers = []
         for n,(kernel_size,in_channels,out_channels) in enumerate(layers):
@@ -43,13 +40,13 @@ class SimpleNet(nn.Module):
                 elif self.activation == "lrelu":
                     cur_layers.append(nn.LeakyReLU())
                 
-        cur_layers.append(nn.Softmax2d)
+        cur_layers.append(Softmax2d())
             
         self.sequential = nn.Sequential(*cur_layers)
         
     def forward(self, x):
         x = self.sequential(x)
-        return (x)
+        return x
 
 class Conv2D(nn.Module):
     def __init__(self, kernel_size, in_channels, out_channels):
@@ -62,14 +59,19 @@ class Conv2D(nn.Module):
         return x
     
 class BatchNorm(nn.Module):
-    def __init__(self, last):
+    def __init__(self, features):
         super().__init__()
-        if last:
-            features = 1
-        else:
-            features = 5
         self.batchnorm = nn.BatchNorm2d(features)
         
     def forward(self,x):
         x = self.batchnorm(x)
+        return x
+    
+class Softmax2d(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.Softmax2d = nn.Softmax2d()
+        
+    def forward(self,x):
+        x = self.Softmax2d(x)
         return x
