@@ -1,0 +1,44 @@
+Ordered False
+Dataset mstrain-poly_3x_coco_instance
+Ensemble Method network
+Credibility Threshold 0.5
+Viable Countability 0
+Average Acceptability 0
+Average Acceptability 2 0.5
+Deviation Threshold 0.5
+Checkpoint work_dirs/unet2_bitwise_or_img_ensemble_reduced_do_40_/SGD_lrelu_BCELoss/epoch_6.pt
+loading annotations into memory...
+Done (t=0.33s)
+creating index...
+index created!
+Loading inference results from model: hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN
+load checkpoint from local path: checkpoints/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth
+Loading inference results from model: detectors_htc_r101_20e_coco
+load checkpoint from local path: checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth
+Loading inference results from model: cascade_mask_rcnn_X-101-64x4d-FPN
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth
+Loading inference results from model: cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth
+Loading inference results from model: gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)
+load checkpoint from local path: checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth
+Loading and preparing results...
+DONE (t=0.07s)
+creating index...
+index created!
+TP 0.46572 nan 0.48018 0.46563
+FP 0.08736 nan 0.17589 0.08679
+TN 0.41577 nan 0.26901 0.41670
+FN 0.03115 nan 0.07492 0.03087
+OA 0.58922 0.88149
+P 0.56475 0.84489
+R 0.62590 0.93637
+F1 0.58994 0.88258
+IoU 0.53228 0.79631
+CG 0.76097 0.00000 0.26531 0.78386
+TCG 0.66843 0.00000 0.18182 0.70159
+NG 0.23903 1.00000 0.73469 0.21614
+TNG 0.20996 0.50272 0.50350 0.19346
+TIG 0.12161 0.49728 0.31469 0.10495
+UGR11 0.49604 inf 4.50000 0.42533
+UGR31 1.12425 inf 10.03846 0.97681
+UGR13 0.85990 inf 7.96154 0.72451

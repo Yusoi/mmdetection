@@ -9,13 +9,16 @@ models['cascade_mask_rcnn_X-101-64x4d-FPN'] = '(c)'
 models['cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco'] = '(d)'
 models['gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)'] = '(e)'
 
+models['mask_rcnn_r50_fpn_1x_coco.py'] = 'mask_rcnn_r50_fpn_1x_coco'
+models['mask_rcnn_r50_fpn_1x_cityscapes'] = 'mask_rcnn_r50_fpn_1x_cityscapes'
+
 def comp(a):
     return float(os.path.splitext(a)[0].split("/")[-1].split("=")[-1])
 
 
 def main():
-    folder = "aa_vc/csv"
-    output_folder = "aa_vc/tables"
+    folder = "transfer_learning/csv"
+    output_folder = "transfer_learning/tables"
 
     result_dict = {}
 
@@ -27,8 +30,8 @@ def main():
         f = open(file,"r")
 
         first_line = np.array(f.readline().strip().split(";"))
-        initial_order = first_line[0:5]
-        parameter_list = first_line[5:]
+        initial_order = first_line[0:2]
+        parameter_list = first_line[2:]
         results = []
         
         line = f.readline()
@@ -37,8 +40,8 @@ def main():
             results.append(split_line)
             line = f.readline()
 
-        order = np.array(results)[:,0:5]
-        results = np.array(results).transpose()[5:]
+        order = np.array(results)[:,0:2]
+        results = np.array(results).transpose()[2:]
         
 
         result_dict[os.path.splitext(file)[0].split("/")[-1]] = results

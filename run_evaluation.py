@@ -6,7 +6,7 @@ ENSEMBLE_METHOD = "average"
 VIABLE_COUNTABILITY = 0
 AVERAGE_ACCEPTABILITY = 0
 # Minimum value of credibility per mask
-CREDIBILITY_THRESHOLD = 0.6
+CREDIBILITY_THRESHOLD = 0.5
 # Minimum IoU in order to group instances together
 DEVIATION_THRESHOLD = 0.5
 # Minimum IoU in order to compare instances while evaluating 
@@ -19,7 +19,7 @@ CHECKPOINT = ""
 #SEGMENTATION MODEL DICTIONARY
 model_dict = {}
 
-"""#Mask R-CNN
+#Mask R-CNN
 model_dict['mask_rcnn_X-101-64x4d-FPN'] = (('configs/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco.py',
                                             'checkpoints/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth',
                                             'https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco/mask_rcnn_x101_64x4d_fpn_mstrain-poly_3x_coco_20210526_120447-c376f129.pth'))
@@ -48,7 +48,7 @@ model_dict['scnet_X-101-64x4d-FPN'] = (('configs/scnet/scnet_x101_64x4d_fpn_20e_
                                         'checkpoints/scnet_x101_64x4d_fpn_20e_coco-fb09dec9.pth',
                                         'https://download.openmmlab.com/mmdetection/v2.0/scnet/scnet_x101_64x4d_fpn_20e_coco/scnet_x101_64x4d_fpn_20e_coco-fb09dec9.pth'))
 
-#Carafe
+"""#Carafe
 model_dict['mask_rcnn_r50_fpn_carafe_1x_coco'] = (('configs/carafe/mask_rcnn_r50_fpn_carafe_1x_coco.py',
                                                    'checkpoints/mask_rcnn_r50_fpn_carafe_1x_coco_bbox_mAP-0.393__segm_mAP-0.358_20200503_135957-8687f195.pth',
                                                    'https://download.openmmlab.com/mmdetection/v2.0/carafe/mask_rcnn_r50_fpn_carafe_1x_coco/mask_rcnn_r50_fpn_carafe_1x_coco_bbox_mAP-0.393__segm_mAP-0.358_20200503_135957-8687f195.pth'))
@@ -56,17 +56,19 @@ model_dict['mask_rcnn_r50_fpn_carafe_1x_coco'] = (('configs/carafe/mask_rcnn_r50
 model_dict['mask_rcnn_r101_fpn_gn-all_3x_coco'] = (('configs/gn/mask_rcnn_r101_fpn_gn-all_3x_coco.py',
                                                     'checkpoints/mask_rcnn_r101_fpn_gn-all_3x_coco_20200513_181609-0df864f4.pth',
                                                     'https://download.openmmlab.com/mmdetection/v2.0/gn/mask_rcnn_r101_fpn_gn-all_3x_coco/mask_rcnn_r101_fpn_gn-all_3x_coco_20200513_181609-0df864f4.pth'))
+"""
+
 #Group Normalization + Weight Standardization
 model_dict['mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco'] = (('configs/gn+ws/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco.py',
                                                               'checkpoints/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco_20200213-57b5a50f.pth',
                                                               'https://download.openmmlab.com/mmdetection/v2.0/gn%2Bws/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco_20200213-57b5a50f.pth'))
 
-model_dict = list(model_dict.items())"""
+model_dict = list(model_dict.items())
 
-model_dict = []
-model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco.py',
-                                                                    'checkpoints/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth',
-                                                                    'https://download.openmmlab.com/mmdetection/v2.0/cascade_rcnn/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco/cascade_mask_rcnn_x101_64x4d_fpn_mstrain_3x_coco_20210719_210311-d3e64ba0.pth')))
+"""model_dict = []
+model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco.py',
+                                                                'checkpoints/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth',
+                                                                'https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth')))
 model_dict.append(('detectors_htc_r101_20e_coco',('configs/detectors/detectors_htc_r101_20e_coco.py',
                                                   'checkpoints/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth',
                                                   'https://download.openmmlab.com/mmdetection/v2.0/detectors/detectors_htc_r101_20e_coco/detectors_htc_r101_20e_coco_20210419_203638-348d533b.pth')))
@@ -79,24 +81,71 @@ model_dict.append(('cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco',('conf
 model_dict.append(('gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)',('configs/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco.py',
                                                                     'checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth',
                                                                     'https://download.openmmlab.com/mmdetection/v2.0/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth')))
-
+"""
 test_config = 'configs/common/mstrain-poly_3x_coco_instance.py'
+#test_config = 'configs/_base_/datasets/cityscapes_instance.py'
 #test_config = 'configs/_base_/datasets/cityscapes_instance.py'
 dataset_name = os.path.splitext(test_config)[0].split('/')[-1]
 
+
 #NEURAL NETWORK
 
-from network_definitions.u_net import UNet
-from network_definitions.fcn import FCN32s as FCN
-from network_definitions.simple_network import SimpleNet
-from network_definitions.pyramid_network import PyramidNet
+import torch.optim as optim
+from network_definitions.u_net2 import UNet2
 import math
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
 import torch
-import torch.optim as optim
 
+import os
+import torch
+import pandas as pd
+from skimage import io, transform
+import numpy as np
+import matplotlib.pyplot as plt
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, utils
+import pickle
+import cv2
+
+# Ignore warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+plt.ion()   # interactive mode
+
+class EnsembleDataset(Dataset):
+    """Ensemble dataset."""
+
+    def __init__(self, root_dir, inc_img=False, transform=None):
+        self.root_dir = root_dir
+        self.inc_img = inc_img
+        self.transform = transform
+
+    def __len__(self):
+        return 10533 #13167
+
+    def __getitem__(self, idx):
+        if torch.is_tensor(idx):
+            idx = idx.tolist()
+
+        inp = cv2.imread(self.root_dir+"/img/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)
+        n1 = io.imread(self.root_dir+"/net1/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]
+        n2 = io.imread(self.root_dir+"/net2/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]
+        n3 = io.imread(self.root_dir+"/net3/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]
+        n4 = io.imread(self.root_dir+"/net4/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]
+        n5 = io.imread(self.root_dir+"/net5/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]
+        res = np.dstack((inp,n1,n2,n3,n4,n5))/255
+        gt = io.imread(self.root_dir+"/gt/"+str(idx)+".png", cv2.IMREAD_UNCHANGED)[:,:,np.newaxis]/255
+        
+        sample = {'name': idx, 'inp': res, 'gt': gt}
+
+        if self.transform:
+            sample = self.transform(sample)
+
+        return sample
+    
 from skimage.transform import resize
 from torchvision import transforms, utils
 
@@ -105,25 +154,16 @@ class Resize(object):
         self.size = size
 
     def __call__(self,sample):
-        im_seg,im_res = sample["name"],sample["valid"],sample["im_seg"],sample["im_res"]
         
-        return {"name": name, "valid": valid, "im_seg": resize(im_seg,(self.size,self.size,N_CHANNELS),preserve_range=True), "im_res": resize(im_res,(self.size,self.size,1),preserve_range=True)}
+        return resize(sample,(*self.size,8))
 
 class ToTensor(object):
-    """Convert ndarrays in sample to Tensors."""
-
+    """Convert ndarrays in sample to Tensors.""" 
+    
     def __call__(self, sample):
-        name,valid,im_seg,im_res = sample["name"],sample["valid"],sample["im_seg"],sample["im_res"]
-
-        # swap color axis because
-        # numpy image: H x W x C
         # torch image: C x H x W
-        im_seg = im_seg.transpose((2, 0, 1))
-        im_res = im_res.transpose((2, 0, 1))
-        return {"name": name, 
-                "valid": valid,
-                "im_seg": torch.from_numpy(im_seg),
-                "im_res": torch.from_numpy(im_res)}
+        sample = sample.transpose((2, 0, 1))
+        return torch.from_numpy(sample)
 
 #AUXILIARY FUNCTIONS
 
@@ -362,23 +402,24 @@ def gather_results(model_dict: Dict[str,Tuple[str,str,str]], score_thr: float, p
             raise(Exception("Dataset sizes are not compatible"))
     return ensemble_results,classes,dataset_compatible
 
-def group_instances(dataset,model_dict,ensemble_results, labels: List[str], dataset_size, score_thr, threshold, ensemble_method, net=None):
+def group_instances(dataset,model_dict,ensemble_results, labels: List[str], dataset_size, score_thr, threshold, ensemble_method,net=None):
     #ensemble_results[model][image][bbox or segm][label][instance]
     final_results = []
     n_models = len(ensemble_results)
+    count = 0
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    
     #Iterate over all the images
     for img in tqdm(range(0,len(dataset))):
         bbox_group = []
         segm_group = []
         
         if ensemble_method == "network":
-            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
             filename = dataset[img]['img_metas'][0].data['filename']
             ori_img_size = dataset[img]['img_metas'][0].data['ori_shape']
-            transform = transforms.Compose([transforms.ToTensor(),
-                                            transforms.Resize((572,572),interpolation=transforms.InterpolationMode.NEAREST)])
+            transform = transforms.Compose([Resize((572,572)),ToTensor()])
             image = Image.open(filename)
-            img_array = np.asarray(image)
+            img_array = np.asarray(image)/255
 
         #Iterate over all the labels
         for (label_nr,label) in labels:
@@ -447,33 +488,55 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
                             bbox[0:3] = np.around(bbox[0:3])
                             bbox_y = (bbox[3]-bbox[1]).astype(int)
                             bbox_x = (bbox[2]-bbox[0]).astype(int)
+                            
+                            
+                            
                             if ensemble_method == "network":
-                                return_group = []
+                                return_group = []   
                                 for x in range(len(cur_instance_group)):
                                     if cur_instance_group[x] is None:
-                                        return_group.append(np.zeros((ori_img_size[0],ori_img_size[1],1),dtype=np.uint8))
+                                        return_group.append(np.zeros(ori_img_size,dtype=np.uint8))
                                     else:
                                         return_group.append(mask_util.decode(cur_instance_group[x][1]))
                                 pred_stack = np.dstack(return_group)
+                                
+                                #fig, ax = plt.subplots(nrows=1, ncols=6, figsize=(30,15))
+                                #ax=ax.flat
+                                
+                                #ax[0].set_title("Input Image")  # set title
+                                #ax[0].imshow(img_array)
+                                
+                                #for i in range(0,5):
+                                    #ax[i].set_title("Input "+str(i+1))  # set title
+                                    #ax[i].imshow(pred_stack[:,:,i],cmap='gray',vmin=0,vmax=1)
+                                
+                                pred_stack = np.dstack((img_array,pred_stack))
+                                
+                                
+                                
                                 #network_input = transform(np.dstack((img_array,pred_stack)))[None,:].float().to(device)
-                                network_input = transform(pred_stack)[None,:].float().to(device)
-                                mask = net(network_input)
+                                network_input = transform(pred_stack)[np.newaxis,:]
+                                network_input = network_input.float().to(device)
                                 
-                                img_size = (ori_img_size[0],ori_img_size[1])
-                                mask = transforms.Resize(img_size,interpolation=transforms.InterpolationMode.NEAREST)(mask)
-                                mask = mask.cpu().detach()
-                                mask = mask.numpy().squeeze(axis=0).transpose((1,2,0)).squeeze(axis=2)
-                                
-                                print(np.max(mask))
-                                
-                                
-                                #mask = mask > 0.5
+                                with torch.no_grad():
+                                    mask = net(network_input)
 
-                                """fig = plt.figure()
-                                plt.imshow(mask,cmap='gray')
-                                plt.show()"""
-                                img_size = (ori_img_size[0],ori_img_size[1])
-                                segmentation = mask.astype("uint8")
+                                mask = mask.cpu().detach()
+                                
+                                #mask = torch.argmax(mask,1)
+                                img_size = (ori_img_size[1],ori_img_size[0])
+                                mask = mask.numpy()[0].transpose((1,2,0))
+                                mask = np.around(mask)
+                                
+                                #ax[5].set_title("Output")  # set title
+                                #ax[5].imshow(mask,cmap='gray')
+                                
+                                #mask = np.where(mask > 0.4, 1, 0)
+                                mask = cv2.resize(mask, dsize=img_size, interpolation=cv2.INTER_NEAREST)
+                                
+                                #fig.tight_layout()
+                            
+                                segmentation = mask.astype("bool")
                                 
                             else:
                                 mask = np.zeros((bbox_y,bbox_x),dtype=int)
@@ -512,6 +575,7 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
                                 segmentation = np.zeros(img_size).astype(bool)
                                 segmentation[bbox[1]:bbox[1]+bbox_y,bbox[0]:bbox[0]+bbox_x] = mask
                             
+                            
                             bbox = bbox.astype(float)
                             bbox[4] = confidence
                             bbox_results.append(np.array(bbox))
@@ -524,7 +588,6 @@ def group_instances(dataset,model_dict,ensemble_results, labels: List[str], data
         final_results.append((bbox_group,segm_group))            
                             
     return final_results
-
 
 
 def run_ensemble(dataset, model_dict: Dict[str,Tuple[str,str,str]], score_thr: float, person_only: bool, ensemble_method: str, result_type='segm', net=None):
@@ -614,32 +677,41 @@ def ensemble_and_evaluate(model_dict,net=None):
     cg_list = list(bc_info['cg'].values())
     ig_list = list(bc_info['ig'].values())
     ng_list = list(bc_info['ng'].values())
-    
+
     if (not cg_list) or (not ig_list) or (not ng_list):
+        print("GC nan nan nan nan")
         print("CG nan nan nan nan")
         print("TCG nan nan nan nan")    
         print("NG nan nan nan nan")
         print("TNG nan nan nan nan")
         print("TIG nan nan nan nan")
-        print("UGR11 nan nan nan nan")
-        print("UGR31 nan nan nan nan")
-        print("UGR13 nan nan nan nan")
-        
+        print("UGR50 nan nan nan nan")
+        print("UGR75 nan nan nan nan")
+        print("UGR25 nan nan nan nan")
+
     else:
 
         cg = np.sum(cg_list,axis=0)
         ig = np.sum(ig_list,axis=0)
         ng = np.sum(ng_list,axis=0)
-
+        
         ideal_guesses = sum([cg[0],ng[0]])
+        cg_ig = sum([cg[0],ig[0]])
         total_guesses = sum([cg[0],ig[0],ng[0]])
         ideal_guesses_small = sum([cg[1],ng[1]])
+        cg_ig_small = sum([cg[1],ig[1]])
         total_guesses_small = sum([cg[1],ig[1],ng[1]])
         ideal_guesses_medium = sum([cg[2],ng[2]])
+        cg_ig_medium = sum([cg[2],ig[2]])
         total_guesses_medium = sum([cg[2],ig[2],ng[2]])
         ideal_guesses_large = sum([cg[3],ng[3]])
+        cg_ig_large = sum([cg[3],ig[3]])
         total_guesses_large = sum([cg[3],ig[3],ng[3]])
 
+        print("GC","{:.5f}".format(cg[0]/cg_ig),
+                "{:.5f}".format(cg[1]/cg_ig_small),
+                "{:.5f}".format(cg[2]/cg_ig_medium),
+                "{:.5f}".format(cg[3]/cg_ig_large))
         print("CG","{:.5f}".format(cg[0]/ideal_guesses),
                 "{:.5f}".format(cg[1]/ideal_guesses_small),
                 "{:.5f}".format(cg[2]/ideal_guesses_medium),
@@ -660,18 +732,18 @@ def ensemble_and_evaluate(model_dict,net=None):
                 "{:.5f}".format(ig[1]/total_guesses_small),
                 "{:.5f}".format(ig[2]/total_guesses_medium),
                 "{:.5f}".format(ig[3]/total_guesses_large))
-        print("UGR11","{:.5f}".format((ng[0]+ig[0])/cg[0]),
-                "{:.5f}".format((ng[1]+ig[1])/cg[1]),
-                "{:.5f}".format((ng[2]+ig[2])/cg[2]),
-                "{:.5f}".format((ng[3]+ig[3])/cg[3]))
-        print("UGR31","{:.5f}".format(((3*ng[0])+ig[0])/cg[0]),
-                "{:.5f}".format(((3*ng[1])+ig[1])/cg[1]),
-                "{:.5f}".format(((3*ng[2])+ig[2])/cg[2]),
-                "{:.5f}".format(((3*ng[3])+ig[3])/cg[3]))
-        print("UGR13","{:.5f}".format((ng[0]+(3*ig[0]))/cg[0]),
-                "{:.5f}".format((ng[1]+(3*ig[1]))/cg[1]),
-                "{:.5f}".format((ng[2]+(3*ig[2]))/cg[2]),
-                "{:.5f}".format((ng[3]+(3*ig[3]))/cg[3]))
+        print("UGR50","{:.5f}".format(cg[0]/((0.50*ng[0])+(0.50*ig[0]))),
+                "{:.5f}".format(cg[1]/((0.50*ng[1])+(0.50*ig[1]))),
+                "{:.5f}".format(cg[2]/((0.50*ng[2])+(0.50*ig[2]))),
+                "{:.5f}".format(cg[3]/((0.50*ng[3])+(0.50*ig[3]))))
+        print("UGR75","{:.5f}".format(cg[0]/((0.75*ng[0])+(0.25*ig[0]))),
+                "{:.5f}".format(cg[1]/((0.75*ng[1])+(0.25*ig[1]))),
+                "{:.5f}".format(cg[2]/((0.75*ng[2])+(0.25*ig[2]))),
+                "{:.5f}".format(cg[3]/((0.75*ng[3])+(0.25*ig[3]))))
+        print("UGR25","{:.5f}".format(cg[0]/((0.25*ng[0])+(0.75*ig[0]))),
+                "{:.5f}".format(cg[1]/((0.25*ng[1])+(0.75*ig[1]))),
+                "{:.5f}".format(cg[2]/((0.25*ng[2])+(0.75*ig[2]))),
+                "{:.5f}".format(cg[3]/((0.25*ng[3])+(0.75*ig[3]))))
 
 def ordering_recursion(models, missing_iterations, used_array, order_array):
     if missing_iterations == 0:
@@ -711,7 +783,7 @@ def non_ordered_recursion(models, next_model, missing_iterations, used_array, or
 
 def ensemble_permutations(models, ordered):
     used_array = [False] * len(models)
-    for i in range(1,len(models)+1):
+    for i in [1]:#range(1,len(models)+1):
         if ordered:
             ordering_recursion(models, i, used_array, [])
         else:
@@ -756,6 +828,8 @@ def main():
                 test_config = 'configs/common/mstrain-poly_3x_coco_instance.py'
             elif args.dataset == "cityscapes":
                 test_config = 'configs/_base_/datasets/cityscapes_instance.py'
+            elif args.dataset == "coco_filtered":
+                test_config = "configs/custom/filtered_coco_instance.py"
             else:
                 print("Unknown Dataset")
             dataset_name = os.path.splitext(test_config)[0].split('/')[-1]
@@ -797,7 +871,8 @@ def main():
                 raise(TypeError('\'deviation_threshold\' must be between 0 or 1'))  
             
         if args.checkpoint:
-            chkp = args.checkpoint  
+            global CHECKPOINT
+            CHECKPOINT = args.checkpoint  
                
     except TypeError as err:
         print(err)
@@ -816,20 +891,28 @@ def main():
 
     if ENSEMBLE_METHOD == "network":
         
-        checkpoint = torch.load(chkp)
-        layer_list = chkp.split("/")[1].split("_")[1:]
-        layers = [int(i) for i in layer_list]
-        
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        net = SimpleNet(5,layers,activation="sigmoid").float().to(device)
+        import torch.optim as optim
+        from network_definitions.u_net2 import UNet2
+        import math
+        import torch.nn as nn
+        import torch.nn.functional as F
+        from torch.nn import init
+        import torch
 
-        criterion = nn.BCEWithLogitsLoss()
+        BATCH_SIZE = 1
+        N_CHANNELS = 8
+
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        net = UNet2(N_CHANNELS,1).float().to(device)
+
+        criterion = nn.BCELoss()
         optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-        
+
+        checkpoint = torch.load(CHECKPOINT)
         net.load_state_dict(checkpoint['model_state_dict'])
-        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        """optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         epoch = checkpoint['epoch']
-        loss = checkpoint['loss']
+        loss = checkpoint['loss']"""
         net.eval()
         
         perm_results = ensemble_and_evaluate(model_dict,net=net)

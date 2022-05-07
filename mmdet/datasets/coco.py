@@ -980,13 +980,16 @@ class CocoDataset(CustomDataset):
             'ng': ng,
         }     
     
-    def gt_return(self):
+    def gt_return(self,cityscapes=False):
         eval_results = OrderedDict()
         cocoGt = self.coco
         imgIds = sorted(cocoGt.getImgIds())
         catIds = sorted(cocoGt.getCatIds())
         imgIds = list(np.unique(imgIds))
         catIds = list(np.unique(catIds))
+        
+        #print(imgIds)
+        #print(catIds)
         
         metrics = ['segm']
         iou_type = 'segm'
@@ -1005,9 +1008,14 @@ class CocoDataset(CustomDataset):
             gt['ignore'] = gt['ignore'] if 'ignore' in gt else 0
             gt['ignore'] = 'iscrowd' in gt and gt['iscrowd']
         _gts = defaultdict(list)       # gt for evaluation    
-        for gt in gts:
-            if gt['category_id'] == 1:
-                _gts[gt['image_id']].append(gt)
+        if not cityscapes:
+            for gt in gts:
+                if gt['category_id'] == 1:
+                    _gts[gt['image_id']].append(gt)
+        else:
+            for gt in gts:
+                if gt['category_id'] == 24 or gt['category_id'] == 25:
+                    _gts[gt['image_id']].append(gt)
         
         return _gts.copy()
                     

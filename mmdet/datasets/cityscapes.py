@@ -361,3 +361,17 @@ class CityscapesDataset(CocoDataset):
                 self_coco.custom_evaluate(results, threshold, is_cityscapes=True))
 
         return eval_results
+    
+    def gt_return(self):  
+        # create CocoDataset with CityscapesDataset annotation
+        self_coco = CocoDataset(self.ann_file, self.pipeline.transforms,
+                                None, self.data_root, self.img_prefix,
+                                self.seg_prefix, self.proposal_file,
+                                self.test_mode, self.filter_empty_gt)
+        # TODO: remove this in the future
+        # reload annotations of correct class
+        self_coco.CLASSES = self.CLASSES
+        self_coco.data_infos = self_coco.load_annotations(self.ann_file)
+        gts = self_coco.gt_return(cityscapes=True)
+
+        return gts

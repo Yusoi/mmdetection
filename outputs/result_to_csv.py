@@ -49,6 +49,7 @@ model_dict['detectors_htc_r101_20e_coco'] = (('configs/detectors/detectors_htc_r
 model_dict = list(model_dict.items())"""
 
 model_dict = []
+"""
 model_dict.append(('hybrid_task_cascade_mask_rcnn_X-101-64x4d-FPN',('configs/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco.py',
                                                                 'checkpoints/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth',
                                                                 'https://download.openmmlab.com/mmdetection/v2.0/htc/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco/htc_x101_64x4d_fpn_dconv_c3-c5_mstrain_400_1400_16x1_20e_coco_20200312-946fd751.pth')))
@@ -63,7 +64,16 @@ model_dict.append(('cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco',('conf
                                                                            'https://download.openmmlab.com/mmdetection/v2.0/dcn/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_dconv_c3-c5_1x_coco-e75f90c8.pth')))
 model_dict.append(('gcnet_X-101-FPN_DCN_Cascade_Mask_GC(c3-c5,r4)',('configs/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco.py',
                                                                     'checkpoints/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth',
-                                                                    'https://download.openmmlab.com/mmdetection/v2.0/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth')))
+                                                                    'https://download.openmmlab.com/mmdetection/v2.0/gcnet/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco/cascade_mask_rcnn_x101_32x4d_fpn_syncbn-backbone_dconv_c3-c5_r4_gcb_c3-c5_1x_coco_20210615_161851-720338ec.pth')))"""
+
+model_dict.append(('mask_rcnn_r50_fpn_1x_coco.py',('configs/mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py',
+                                                   'checkpoints/mask_rcnn_r50_fpn_1x_coco_20200205-d4b0c5d6.pth',
+                                                   'https://download.openmmlab.com/mmdetection/v2.0/mask_rcnn/mask_rcnn_r50_fpn_1x_coco/mask_rcnn_r50_fpn_1x_coco_20200205-d4b0c5d6.pth')))
+
+model_dict.append(('mask_rcnn_r50_fpn_1x_cityscapes',('configs/cityscapes/mask_rcnn_r50_fpn_1x_cityscapes.py',
+                                                      'checkpoints/mask_rcnn_r50_fpn_1x_cityscapes_20201211_133733-d2858245.pth',
+                                                      'https://download.openmmlab.com/mmdetection/v2.0/cityscapes/mask_rcnn_r50_fpn_1x_cityscapes/mask_rcnn_r50_fpn_1x_cityscapes_20201211_133733-d2858245.pth')))
+
 
 key_list = [model[0] for model in model_dict]
 
@@ -74,10 +84,8 @@ def main():
     parser = argparse.ArgumentParser(description="Parse result files to obtain the highest value of the mask AP")
     parser.add_argument('folder', help="File to resolve")
     args = parser.parse_args()
-    
-    print()
 
-    for file in glob.glob(args.folder+"/*.txt"):
+    for file in glob.glob(args.folder+"/results/*.txt"):
         result_file = open(file,"r").read()
         model_names = re.findall(r"^Model Order: ([^\n]+)",result_file,flags=re.MULTILINE)
         tps = re.findall(r"^TP (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
@@ -98,7 +106,7 @@ def main():
         ugr31 = re.findall(r"^UGR31 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
         ugr13 = re.findall(r"^UGR13 (.+) (.+) (.+) (.+)",result_file,flags=re.MULTILINE)
 
-        with open("aa_vc/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
+        with open("transfer_learning/csv/"+os.path.splitext(file)[0].split("/")[-1]+".csv","w") as f:
             for model in key_list:
                 f.write(model+";")
             f.write("tp%;tp_s%;tp_m%;tp_l%;fp%;fp_s%;fp_m%;fp_l%;tn%;tn_s%;tn_m%;tn_l%;fn%;fn_s%;fn_m%;fn_l%;")
