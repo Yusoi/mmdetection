@@ -210,6 +210,64 @@ TIG 0.19138 0.13380 0.42545 0.18533
 UGR50 4.01550 0.01418 0.84974 4.42185
 UGR75 4.34406 0.01039 0.95072 4.88651
 UGR25 3.73314 0.02235 0.76815 4.03789
+Model Order: mask_rcnn_r50_fpn_carafe_1x_coco -> 
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+Loading inference results from model: mask_rcnn_r50_fpn_carafe_1x_coco
+load checkpoint from local path: checkpoints/mask_rcnn_r50_fpn_carafe_1x_coco_bbox_mAP-0.393__segm_mAP-0.358_20200503_135957-8687f195.pth
+Loading and preparing results...
+DONE (t=0.06s)
+creating index...
+index created!
+TP 0.45297 0.51667 0.48062 0.45270
+FP 0.05214 0.16250 0.10830 0.05159
+TN 0.43641 0.28333 0.31259 0.43759
+FN 0.05848 0.03750 0.09849 0.05811
+OA 0.54869 0.88938
+P 0.55409 0.89814
+R 0.54492 0.88327
+F1 0.54616 0.88527
+IoU 0.49374 0.80031
+GC 0.72984 0.22222 0.32386 0.73888
+CG 0.79952 0.01600 0.39860 0.82001
+TCG 0.61694 0.01515 0.21756 0.63577
+NG 0.20048 0.98400 0.60140 0.17999
+TNG 0.15470 0.93182 0.32824 0.13955
+TIG 0.22836 0.05303 0.45420 0.22468
+UGR50 3.22105 0.03077 0.55610 3.49101
+UGR75 3.56370 0.02128 0.60477 3.95293
+UGR25 2.93852 0.05556 0.51467 3.12575
+Model Order: mask_rcnn_r101_fpn_gn-all_3x_coco -> 
+loading annotations into memory...
+Done (t=0.10s)
+creating index...
+index created!
+Loading inference results from model: mask_rcnn_r101_fpn_gn-all_3x_coco
+load checkpoint from local path: checkpoints/mask_rcnn_r101_fpn_gn-all_3x_coco_20200513_181609-0df864f4.pth
+Loading and preparing results...
+DONE (t=0.06s)
+creating index...
+index created!
+TP 0.45281 0.50417 0.47983 0.45252
+FP 0.04827 0.21667 0.11397 0.04755
+TN 0.44086 0.25417 0.31379 0.44222
+FN 0.05805 0.02500 0.09241 0.05772
+OA 0.54267 0.89367
+P 0.54931 0.90461
+R 0.53671 0.88386
+F1 0.53970 0.88879
+IoU 0.48959 0.80626
+GC 0.76485 0.25000 0.28780 0.77854
+CG 0.74662 0.01626 0.41259 0.76478
+TCG 0.60724 0.01550 0.20415 0.62813
+NG 0.25338 0.98374 0.58741 0.23522
+TNG 0.20607 0.93798 0.29066 0.19320
+TIG 0.18669 0.04651 0.50519 0.17868
+UGR50 3.09211 0.03150 0.51304 3.37821
+UGR75 3.01764 0.02168 0.59296 3.31352
+UGR25 3.17034 0.05755 0.45211 3.44547
 Model Order: mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco -> 
 loading annotations into memory...
 Done (t=0.05s)

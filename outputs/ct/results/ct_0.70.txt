@@ -210,6 +210,64 @@ TIG 0.08842 0.02362 0.14545 0.08827
 UGR50 4.56522 0.00000 0.79661 4.99621
 UGR75 3.77364 0.00000 0.61438 4.19424
 UGR25 5.77703 0.00000 1.13253 6.17737
+Model Order: mask_rcnn_r50_fpn_carafe_1x_coco -> 
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+Loading inference results from model: mask_rcnn_r50_fpn_carafe_1x_coco
+load checkpoint from local path: checkpoints/mask_rcnn_r50_fpn_carafe_1x_coco_bbox_mAP-0.393__segm_mAP-0.358_20200503_135957-8687f195.pth
+Loading and preparing results...
+DONE (t=0.05s)
+creating index...
+index created!
+TP 0.45581 nan 0.48727 0.45562
+FP 0.05051 nan 0.10465 0.05018
+TN 0.43875 nan 0.31889 0.43949
+FN 0.05493 nan 0.08919 0.05472
+OA 0.58531 0.89456
+P 0.58955 0.90104
+R 0.58261 0.89042
+F1 0.58289 0.89086
+IoU 0.52919 0.80879
+GC 0.86871 0.00000 0.59322 0.87135
+CG 0.72610 0.00000 0.26316 0.74628
+TCG 0.65430 0.00000 0.22293 0.67221
+NG 0.27390 1.00000 0.73684 0.25372
+TNG 0.24681 0.99213 0.62420 0.22854
+TIG 0.09889 0.00787 0.15287 0.09925
+UGR50 3.78538 0.00000 0.57377 4.10141
+UGR75 3.11823 0.00000 0.44025 3.42581
+UGR25 4.81572 0.00000 0.82353 5.10896
+Model Order: mask_rcnn_r101_fpn_gn-all_3x_coco -> 
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+Loading inference results from model: mask_rcnn_r101_fpn_gn-all_3x_coco
+load checkpoint from local path: checkpoints/mask_rcnn_r101_fpn_gn-all_3x_coco_20200513_181609-0df864f4.pth
+Loading and preparing results...
+DONE (t=0.05s)
+creating index...
+index created!
+TP 0.45511 0.47500 0.49498 0.45482
+FP 0.04636 0.10000 0.08648 0.04607
+TN 0.44287 0.37500 0.31895 0.44375
+FN 0.05566 0.05000 0.09958 0.05536
+OA 0.56446 0.89798
+P 0.57087 0.90817
+R 0.55854 0.88856
+F1 0.56157 0.89337
+IoU 0.51118 0.81321
+GC 0.86567 0.25000 0.48101 0.87095
+CG 0.69653 0.00787 0.28571 0.71526
+TCG 0.62859 0.00769 0.21839 0.64672
+NG 0.30347 0.99213 0.71429 0.28474
+TNG 0.27387 0.96923 0.54598 0.25745
+TIG 0.09754 0.02308 0.23563 0.09583
+UGR50 3.38495 0.01550 0.55882 3.66127
+UGR75 2.73558 0.01050 0.46626 2.97968
+UGR25 4.43858 0.02963 0.69725 4.74716
 Model Order: mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco -> 
 loading annotations into memory...
 Done (t=0.05s)
@@ -218,7 +276,7 @@ index created!
 Loading inference results from model: mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco
 load checkpoint from local path: checkpoints/mask_rcnn_r101_fpn_gn_ws-all_20_23_24e_coco_20200213-57b5a50f.pth
 Loading and preparing results...
-DONE (t=0.06s)
+DONE (t=0.05s)
 creating index...
 index created!
 TP 0.45850 nan 0.48831 0.45826
